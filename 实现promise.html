@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script type="text/javascript">
+    class Promise {
+        constructor(){
+            this.callbacks = [];
+            this.oncatch = null;      
+        }
+
+        resolve(result){
+            this.complete('resolve',result);
+        }
+        
+        reject(result){
+             this.complete('reject',result);
+        }
+
+        then(onsuccess,onfail){
+            this.callbacks.push({
+                'resolve': onsuccess,
+                'reject': onfail
+            })
+
+            return this
+        }
+
+        complete(type,result){
+            if (type === 'reject' && this.oncatch ) {
+                this.callbacks = [];
+                this.oncatch(result);
+            }else if(this.callbacks[0]){
+                 let callback = this.callbacks.shift();
+                 if (callback[type]) {} callback[type](result);
+            }
+           
+        }
+
+        catch(onfail){
+            this.oncatch = onfail;
+            return this
+        }
+    }
+    
+
+    var p = new Promise();
+
+    function fn() {
+        setTimeout(function () {
+            console.log('fn执行了');
+            p.resolve('data1');
+        }, 2000);
+        return p;
+    }
+
+    function fn1(result) {
+        setTimeout(function () {
+           console.log(result);
+        },2000);
+    }
+    
+    fn().then(fn1);
+
+    console.log('这是同步执行的第一步');
+</script>
