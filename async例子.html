@@ -10,7 +10,65 @@
 
 </html>
 <script type="text/javascript">
-    function tackLongTime(n) {
-        return 
+    function takeLongTime(n) {
+        return new Promise(resolve => {
+            setTimeout(() => resolve(n + 200), n);
+        });
     }
+    
+    function step0() {
+        console.log(`第一步 用时${5000}`);
+        return new Promise(resolve => {
+            setTimeout(() => resolve(5000), 5000);
+        });
+    }
+
+
+    function step1(n) {
+        console.log(`第一步 用时${n}`);
+         return takeLongTime(n);
+    }
+    
+    function step2(n) {
+        console.log(`第二步 用时${n}`);
+         return takeLongTime(n);
+    }
+
+    function step3(n) {
+        console.log(`第三步 用时${n}`);
+         return takeLongTime(n);
+    }
+
+
+    //promise实现
+    /*function doIt() {
+        console.time("doIt");
+        let time1 = 300;
+        step1(time1)
+            .then(time2=>step2(time2))
+            .then(time3=>step3(time3))
+            .then(result => {
+                console.log(`result is ${result}`);
+                console.timeEnd("doIt");
+            });
+
+    }
+    doIt();*/
+    
+    console.log('开始');
+    //async实现
+    async function doIt() {
+        console.time('doIt');
+        let time1 = 400;
+        let time0 = await step0();
+        console.log(time0);
+        let time2 = await step1(time1);
+        let time3 = await step1(time2);
+        const result = await step3(time3);
+        console.log(`result is ${result}`);
+        console.timeEnd("doIt");
+    }
+
+    doIt();
+    console.log('结束');
 </script>

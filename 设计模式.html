@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+    //1.构造函数
+    function Person(name,age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    }
+    
+    var xiaoming = new Person('xiaoming',18);
+    xiaoming.sayName();
+
+    //2.混合模式（继承）
+    function Student(name,age,gender) {
+        Person.call(this,name,gender);
+        this.gender = gender;
+    }
+    
+    Student.prototype = Object.create(Person.prototype);
+        //兼容写法
+        /*function F() {}
+        F.prototype = Person.prototype;
+        Student.prototype = new F();*/
+
+    Student.prototype.getGender = function () {
+        console.log(this.gender);
+    }
+    
+    var lilei = new Student('lilei',18,'man');
+    lilei.sayName();
+    lilei.getGender();
+    
+    //3.模块模式
+    var Person1 = (function () {
+        var name = 'ruoyu'
+        function sayName() {
+            console.log(name);
+        }
+        return {
+            name: name,
+            sayName: sayName
+        }
+
+    })();
+    
+    //4.工厂模式
+    function createPerson(name) {
+          var person = {
+            name:name,
+            sayName:function () {
+                console.log(name);
+            }
+          }            
+          return p;  
+    };
+    //5.单例模式
+    var Person  = function () {
+        var instance
+        function init(name) {
+            return {
+                name:name
+            }
+        }
+
+        return function createPerson(name) {
+            if (!instance) {
+                return init(name);
+            }
+
+            return instance
+        }  
+    };
+    
+    //6.订阅发布模式
+    var PubSub = function () {
+        this.eventPool = {};          
+    };
+
+    PubSub.prototype.off = function (topicName) {
+        delete this.eventPool[topicName];
+    }
+    
+    PubSub.prototype.on = function (topicName,callback) {
+        var topic = this.eventPool[topicName];
+        if (!topic) {
+            this.eventPool[topicName] = [];
+        }
+        this.eventPool[topicName].push(callback);
+    }
+    
+    PubSub.prototype.fire = function () {
+        var _arg = [].slice.call(arguments);
+        var topicName = _arg.shift();
+
+        var callbackArg = _arg;
+        var topicCallback = this.eventPool[topicName];
+        
+        if (topicCallback) {
+            topicCallback.forEach(function (item) {
+                 item.apply(undefined,callbackArg);
+            });
+        }
+
+    };
+    
+    var Event = new PubSub();
+
+    Event.on('change', function(val){
+        console.log('change...  now val is ' + val);  
+    });
+    Event.fire('change', '饥人谷');
+    // Event.off('change');
+</script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .ex1{
+                border: 1px solid black;
+                font-size: 20px;
+            }
+            .ex1 span{
+                width:4em;
+                border: 1px solid green;
+                display: inline-block;
+                overflow: hidden;
+                height: 20px;
+                line-height: 20px;
+                text-align: justify;
+            }
+            .ex1 span::after{
+                content: '';
+                display: inline-block;
+                width: 100%;
+                border: 1px solid  blue;
+            }
+            .ex2 p{
+                width:10em;
+                white-space: nowrap;
+                overflow:hidden;
+                text-overflow: ellipsis;
+            }
+            .ex3 p{
+                width:10em;
+                border: 1px solid red;
+                overflow : hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ex1">
+            <span>标题对齐</span><br>
+            <span>用户名</span><br>
+            <span>密&nbsp;&nbsp;&nbsp;码</span>
+        </div>
+        <div class="ex2">
+            <p>我们是社会主义接班人我们生长在五星红旗下</p>
+        </div>
+        <div class="ex3">
+            <p>我们是社会主义接班人我们生长在五星红旗下,我们是社会主义接班人我们生长在五星红旗下</p>
+        </div>
+    </body>
+</html>

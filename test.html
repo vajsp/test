@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script>
+    function Foo() {
+    var i = 0;
+    return function() {
+        console.log(i++);
+    }
+}
+
+// Foo();
+
+var f1 = Foo(),
+    f2 = Foo();
+    console.log(f1===f2);
+f1();
+f1();
+f2();
+</script>
