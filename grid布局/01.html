@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            display: grid;
+            border: 2px solid black;
+            height: 250px;
+            margin-top: 30px;
+        }
+
+        .container_01 {
+            grid-template-columns: 40px 50px auto 50px 40px;
+            grid-template-rows: 70% 20px auto;
+        }
+
+        .container_02 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .red {
+            width: 100%;
+            height: 100%;
+            background-color: red;
+        }
+
+        .green {
+            width: 100%;
+            height: 100%;
+            background-color: green;
+        }
+
+        .yellow {
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+        }
+
+        .pink {
+            width: 100%;
+            height: 100%;
+            background-color: pink;
+        }
+
+        .blue {
+            width: 100%;
+            height: 100%;
+            background-color: blue;
+        }
+
+        .purple {
+            width: 100%;
+            height: 100%;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>grid-template-columns / grid-template-rows</h3>
+    <div class="container container_01">
+        <div class="red"></div>
+        <div class="yellow"></div>
+        <div class="pink">
+            你可以给网格线指定确切的命名。 注意中括号里的网格线命名语法：
+            <br> .container {
+            <br> &nbsp;&nbsp;&nbsp;grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px
+            [end];
+            <br> &nbsp;&nbsp;&nbsp;grid-template-rows:[row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+            <br> }
+        </div>
+        <div class="purple"></div>
+        <divl class="blue"></divl>
+        <div class="blue"></div>
+    </div>
+    <div class="container container_02">
+        <div class="red">
+            需要注意的是，一个网格线可以有不止一个名字。例如，这里第2条网格线有两个名字：row1-end 和 row2-start：
+            <br>.container {
+            <br>&nbsp;&nbsp;grid-template-rows: [row1-start] 25% [row1-end row2-start] 25% [row2-end];
+            <br> }
+        </div>
+        <div class="green">
+            “fr”单位允许您将轨道大小设置为网格容器自由空间的一部分。 例如，下面的代码会将每个 grid item 为 grid container 宽度的三分之一：
+            <br> .container {
+            <br> &nbsp;&nbsp;&nbsp;grid-template-columns: 1fr 1fr 1fr;
+            <br> }
+        </div>
+        <div class="yellow">
+            如果你的定义中包含重复的部分，则可以使用repeat() 符号来简化写法：
+            <br> .container {
+            <br> &nbsp;&nbsp;grid-template-columns: repeat(3, 20px [col-start]) 5%;
+            <br> }
+            <br>上面的写法和下面等价：
+            <br>.container {
+            <br> &nbsp;&nbsp;grid-template-columns: 20px [col-start] 20px [col-start] 20px [col-start] 5%;
+            <br>}
+        </div>
+    </div>
+    <h3>grid-template-areas</h3>
+</body>
+
+</html>

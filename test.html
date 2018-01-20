@@ -1,12 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-     <img src="样式堆叠顺序.png" alt="">
-    </body>
-</html>
-<script>
+<head>
+    <meta charset="UTF-8" />
 
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        .toast {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+            color: #D15A39;
+            background: #ffff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            box-shadow: 0px 0px 3px 1px rgba(255,255,255,.6);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        sticky-note
+    </div>
+</body>
+</html>
+<script src="./test.js"></script>
+<script>
+    
+class toast {
+    constructor(msg,time) {
+        this.msg = msg;
+        this.dismissTime = time || 1000;
+        this.createToast();
+        this.showToast();
+    }
+    
+    createToast() {
+        var tpl = `<div className="toast">${this.msg}</div>`
+        this.$toast = $(tpl);
+        $('body').append(this.$toast);
+    }
+
+    showToast() {
+        var self = this;
+        this.$toast.fadeIn(300,function () {
+            setTimeout(() => {
+                self.$toast.fadeOut(300,function () {
+                    self.$toast.remove;
+                })
+            }, self.dismissTime);
+        })
+    }
+}
+
+function Toast(msg,time) {
+    return new toast(msg,time);
+}
+
+
+export default Toast;
 </script>
