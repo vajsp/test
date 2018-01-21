@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>grid-template</title>
+</head>
+
+<body>
+    <h3>grid-template</h3>
+    <p>在单个声明中定义 grid-template-rows、grid-template-columns、grid-template-areas 的简写。</p>
+    <p>
+        <strong>none</strong> - 将三个属性都设置为其初始值</p>
+    <p>
+        <strong>subgrid</strong> - 把 grid-template-rows 和 grid-template-columns 设置为 subgrid, 并且 grid-template-areas 设置为初始值</p>
+    <p>
+        <strong>grid-template-rows / grid-template-columns</strong> - 把 grid-template-columns 和 grid-template-rows 设置为指定值, 与此同时,
+        设置 grid-template-areas 为 none</p>
+    <p>
+        .container { grid-template: none | subgrid | grid-template-rows / grid-template-columns; }
+    </p>
+    <p>
+        它也可以使用一个更复杂但相当方便的语法来指定这三个值。 一个例子：
+    </p>
+    <p>
+        .container {
+        <br> &nbsp;&nbsp; grid-template:
+        <br> &nbsp;&nbsp;&nbsp;&nbsp;[row1-start] "header header header" 25px [row1-end]
+        <br> &nbsp;&nbsp;&nbsp;&nbsp;[row2-start] "footer footer footer" 25px [row2-end] / auto 50px auto;
+        <br> }
+    </p>
+    <p>以上等价于：</p>
+    <p>
+        .container {
+        <br>&nbsp;&nbsp;&nbsp;&nbsp; grid-template-rows: [row1-start] 25px [row1-end row2-start] 25px [row2-end];
+        <br>&nbsp;&nbsp;&nbsp;&nbsp; grid-template-columns: auto 50px auto;
+        <br>&nbsp;&nbsp;&nbsp;&nbsp; grid-template-areas: "header header header" "footer footer footer";
+        <br> }
+    </p>
+    <p>由于 grid-template 不会重置隐式网格属性（grid-auto-columns，grid-auto-rows和grid-auto-flow），而这可能是大多数情况下你想要做的。因此建议使用grid属性来代替grid-template。
+    </p>
+    <h3>grid-column-gap / grid-row-gap</h3>
+    <p>指定网格线的大小，你可以把它想象为设置列/行之间的间距的宽度。</p>
+    <p>line-size - 一个长度值</p>
+    <p>
+        .container {
+        <br> grid-column-gap: line-size;
+        <br> grid-row-gap: line-size;
+        <br> }
+    </p>
+    <p>举例</p>
+    <p>
+        .container {
+        <br> &nbsp;&nbsp; grid-template-columns: 100px 50px 100px;
+        <br>&nbsp;&nbsp; grid-template-rows: 80px auto 80px;
+        <br>&nbsp;&nbsp; grid-column-gap: 10px;
+        <br>&nbsp;&nbsp; grid-row-gap: 15px;
+        <br> }
+    </p>
+    <h3>grid-gap</h3>
+    <p>grid-row-gap 和 grid-column-gap 的缩写</p>
+    <p>
+        .container {
+        <br> &nbsp;&nbsp; grid-gap: grid-row-gap grid-column-gap;
+        <br> }
+    </p>
+</body>
+
+</html>
