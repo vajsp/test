@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .layout article div {
+            min-height: 100px;
+        }
+
+        section {
+            border: 2px solid black;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+     <h2>在高度已知的情况下，两边300px宽度固定，中间宽度自适应</h2>
+    <!-- float -->
+    <section class="layout float">
+        <style>
+            .layout.float .left {
+                float: left;
+                width: 300px;
+                background-color: yellow;
+            }
+
+            .layout.float .right {
+                float: right;
+                width: 300px;
+                background-color: red;
+            }
+
+            .layout.float .center {
+                background-color: blue;
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="center">
+                <h1>浮动解决方案</h1>
+                <p>清浮动，兼容性好</p>
+            </div>
+        </article>
+    </section>
+    <!-- postion -->
+    <section class="layout position">
+        <style>
+            .layout.position {
+                position: relative;
+            }
+
+            .position .left {
+                width: 300px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: red;
+            }
+
+            .position .right {
+                width: 300px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: green;
+            }
+
+            .position .center {
+                padding: 0 300px;
+                background: blue;
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="center">
+                <h1>定位解决方案</h1>
+                <p>优点：快捷，因为你的布局已经脱离文档流了使用性能差。</p>
+            </div>
+        </article>
+    </section>
+    <!-- flex -->
+    <section class="layout flex">
+        <style>
+            .layout.flex .left-right-center {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .flex .left {
+                width: 300px;
+                background-color: red;
+            }
+
+            .flex .right {
+                width: 300px;
+                background: blue;
+            }
+
+            .flex .center {
+                flex: 1;
+                background: greenyellow;
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+                <h1>flex解决方案</h1>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+    <!-- grid -->
+    <section class="layout grid">
+        <style>
+            .layout.grid .left-right-center {
+                display: grid;
+                grid-template-columns: 300px auto 300px;
+                grid-template-rows: auto;
+            }
+            .layout.grid .right{
+                width: 300px;
+                background: yellowgreen;
+            }
+            .layout.grid .left{
+                width: 300px;
+                background: red;
+            }
+            .layout.grid .center{
+                background: green;
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+                <h1>grid解决方案</h1>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+    <!-- table -->
+    <section class="layout table">
+        <style>
+            .layout.table .left-right-center{
+                display: table;
+                width: 100%;
+                height: 100px;
+            }
+            .layout.table .left-right-center>div{
+                display: table-cell;
+                /* min-height: 100px; */
+            }
+            .layout.table .right{
+                background: red;
+                width: 300px;
+            }
+            .layout.table .left{
+                background: yellow;
+                width: 300px;
+            }
+            .layout.table .center{
+                background: blue;
+            }
+        </style>
+        
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+                <h1>table解决方案</h1>
+                <p>兼容好支持ie8</p>
+                <p>缺点</p>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+    <h3>如果高度位置五个方案哪个可以用</h3>
+</body>
+
+</html>

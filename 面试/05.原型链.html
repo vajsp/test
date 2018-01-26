@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    对象的三种创建方式
+    <script>
+        //第一种  字面量
+        var o1 = {name:"o1"}
+        var o2 = new Object({name:'o2'});
+        //第二种 方式
+        var M = function (name) {this.name = name}
+        var o3 = new M('o3');
+        //第三种 方式
+        var p = {name:"p"}
+        var o4 = Object.create(p);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    http协议的主要特点
+        简单快速 灵活 无连接 无状态
+    get post 区别
+
+    http状态码
+
+
+
+    http持久连接
+        就是长连接 keep-Alive
+    http管线化
+        就是在持久连接情况下，请求和响应都打包分批次发送
+
+        普通请求
+            请求1 -> 响应1 -> 请求2 -> 响应2 -> 请求3 -> 响应3
+        管线化
+            请求1 -> 请求2 -> 请求3 -> 响应1 -> 响应3 -> 响应3
+    
+        管线化的特点
+            管线化机制通过持久连接完成，仅http/1.1支持此技术
+            只有get、head请求可以进行管线化，而POST则有所限制
+            初次创建连接时不应启动管线机制，因为对方服务器不一定支持HTTP/1.1版本协议
+            管线化不会影响响应到来的顺序
+            由于上面提到的服务器端，开启管线化很可能并不会带来大幅度的性能提升，而且很多服务器和
+            代理程序对管线化的支持并不好，因此现代浏览器chrome和firefox默认并未开启管线化支持
+        
+
+</body>
+</html>

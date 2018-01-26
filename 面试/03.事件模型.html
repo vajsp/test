@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    DOM事件类
+        基本概念：DOM事件级别
+            DOM0 element.onclick = function(){}
+            DOM2 element.addEventListener("click",function(){},false)
+                DOM2是有了addEvent这个API
+            DOM3 element.addEventListener("keyup",function(){},false) 
+                DOM3事件是添加了""keyup"这种事件类型
+        DOM事件模型
+           
+        DOM事件流
+
+        描述DOM事件捕获的具体流程
+        window -> document ->html ->body
+        Event对象的常见应用
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+            event.currentTarget();
+            event.target();
+        自定义事件
+            var eve = new Event('custome');
+            ev.addEventListener('custome',function(){
+                console.log("custome")
+            })
+            ev.dispatchEvent(eve);
+
+            //还有一个是CustomEvent 
+</body>
+</html>
