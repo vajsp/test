@@ -74,7 +74,7 @@
 
         return function createPerson(name) {
             if (!instance) {
-                return init(name);
+                instance = init(name);
             }
 
             return instance
