@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    题目 提升页面性能的方法有哪些
+        1、资源合并压缩，减少http请求
+        2、非核心代码异步加载 -》 异步加载的方式 -》异步加载的原理
+            A.动态脚本加载 B.defer C.async
+
+            异步加载的区别
+                1.defer是html解析完成之后才会执行，如果是多个，按照加载的顺序依次执行
+                2.async是在加载完成后立即执行，如果是多个，执行的顺序和加载的顺序无关
+
+        3、利用浏览器缓存 -》缓存的分类 -》 缓存的原理
+            缓存的分类
+                (1)强缓存
+                    Expires 
+                    Cache-Control 
+                (2)协商缓存
+                    Last-Modified
+                    ETag
+        4、使用cdn
+            
+        5、预解析DNS
+            <meta http-equiv="x-dns-prefetch-control" content="on">
+            <link rel="dns-prefetch" href="//host_name_to_prefetch.com">
+            许多高级浏览器默认打开dns-prefetch，但https的网站会关闭这个功能，第一个标签会打开这个功能
+
+</body>
+</html>

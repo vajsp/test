@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    JS是单线程的  通俗的说就是同一段时间只能做一件事情
+
+    任务队列
+
+    同步任务
+        例如 console.log()
+    异步任务   要挂起
+        例如 
+        setTimeout setInterval
+        DOM事件
+            addEventListener
+        ES6中的Pormise
+            
+
+    同步任务 优先 异步任务执行 所以setTimeout 为0时会后执行
+
+    <script>
+        console.log(1);
+        setTimeout(() => {
+           console.log(2) 
+        },0)
+        console.log(3)
+
+        //请问输出结果
+
+    </script>
+
+</body>
+</html>

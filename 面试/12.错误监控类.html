@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    错误监控类
+        ##两种问法 
+            开门见山问错误 
+            产品质量检测体系
+
+        ##前端错误的分类
+            1、即使运行错误的捕获方式
+                a.try...catch  b. window.onerror
+            2、资源加载错误
+                (1) object.oneerror
+                (2)performance.getEntries()
+                (3)Error事件捕获
+                <script>
+                    window.addEventListener('error',function (e) {
+                        console.log('捕获',e)
+                    },true)
+                    //错误事件没有冒泡 只能在捕获阶段
+                </script>
+                
+
+        ##错误的捕获方式
+
+        ##上报错误的基本原理
+            1、采用Ajax通信的方式上报
+            2、利用Image对象上报
+            <script>
+                (new Image()).src = 'http://baidu.com/tesjk?err=1'
+            </script>
+
+
+</body>
+</html>

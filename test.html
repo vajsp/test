@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
 
     <title>test</title>
-    <style type="text/css">
-        .nihao{
-            /* width: 100px;
-            height: 100px; */
-            margin-top: 20px;
-            margin-bottom: 50px;
-            /* background-color: yellowgreen; */
-        }
+
     </style>
 </head>
+
 <body>
-   <div class="nihao"></div>
+    <div id="box"></div>
 </body>
+
 </html>
-<!-- <script src="./test.js"></script> -->
+<script>
+    // var forg = DocumentFragment;
+
+    // var node = document.createElement('a');
+    var str ='';
+
+    for (let index = 0; index < 10; index++) {
+        // var node = document.createElement('a');
+        // node.innerHTML = index;
+        str += `<a>${index}</a>`
+    }
+
+    var box = document.getElementById('box');
+
+    box.innerHTML = str;
+
+    box.addEventListener('click',function (e) {
+        alert(e.target.innerText)
+    })
+
+</script>
