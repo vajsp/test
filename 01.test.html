@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <title>test</title>
+
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    function Parent(name) {
+        this.name = name;
+    }
+
+    Parent.prototype.sayName = function () {
+        return this.name
+    }
+
+    function Child(name, age) {
+        Parent.call(this, name);
+        this.age = age;
+    }
+
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructer = Child;
+
+
+    var p1 = new Child('limming');
+
+    console.log(p1.sayName());
+
+</script>

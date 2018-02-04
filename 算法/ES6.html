@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    es6   ie10+ chrome firefox 
+
+    1.变量
+        var
+            可以重复声明
+            不能限制修改
+            没有块级作用域
+
+        let  const 
+            不能重复声明
+            都有块级作用域
+
+    2.函数
+        箭头函数
+            1.如果只有一个参数,()可以省
+            2.如果只有一个return，{}可以省
+        
+        默认参数
+            1.参数的扩展/展开
+                收集剩余参数
+                function show(a,b,...args){}
+                rest parmaeter必须是最后一个参数
+            2.默认参数
+                
+        解构赋值
+            1.左右两边的结构必须是一样
+            2.右边必须是个东西
+            3.声明和赋值必须分开
+
+        数组
+            map 映射
+            <script>
+                var newArry = [1,2,3].map((item) => {
+                    return item*2
+                })
+                console.log(newArry);
+                
+            </script>
+            reduce 汇总
+            <script>
+                var arr = [1,3,3,5];
+                var result = arr.reduce((tep,item,index) => {
+                    return tep + item;
+                },4)
+                console.log(result)
+
+            </script>
+            filter
+            <script>
+                var arr = [1, 3, 3, 5];
+                var result  = arr.filter((item) => {
+                    return item === 3;
+                })
+                console.log(result)
+            </script>
+            forEach
+
+    3.字符串
+            两个新方法
+                start with
+                endswith
+            字符串模板
+
+            JSON
+                1.只能用双引号
+                2.所有的名字必须用引号包起来
+    4.面向对象
+    5.面向对象
+    6.promise
+    7.generator
+    8.模块化
+
+</body>
+</html>
