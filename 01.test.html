@@ -3,37 +3,57 @@
 
 <head>
     <meta charset="UTF-8" />
-
     <title>test</title>
-
+    <style>
+    #main {
+        width: 100px;
+        height: 100px;
+        padding: 50px;
+        background-color: yellow;
+        border: 1px solid red;
+    }
     </style>
 </head>
 
 <body>
-    <div id="box"></div>
+    <div id="main">
+    </div>
 </body>
 
 </html>
 <script>
-    function Parent(name) {
-        this.name = name;
+const generatePage = function({
+    title = '',
+    entry = '',
+    template = './src/index.html',
+    name = '',
+    chunks = []
+} = {}) {
+    return {
+        entry,
+        chunks,
+        template,
+        filename: name + '.html'
+        /*plugins: [
+            new HtmlWebpackPlugin({
+                chunks,
+                template,
+                filename: name + '.html'
+            })
+        ]*/
     }
-
-    Parent.prototype.sayName = function () {
-        return this.name
-    }
-
-    function Child(name, age) {
-        Parent.call(this, name);
-        this.age = age;
-    }
-
-    Child.prototype = Object.create(Parent.prototype);
-    Child.prototype.constructer = Child;
+}
 
 
-    var p1 = new Child('limming');
+var obj = generatePage({
+        title: 'page A',
+        entry: {
+            a: './src/pages/a'
+        },
+        name: 'a',
+        chunks:['react','a']
+    })
 
-    console.log(p1.sayName());
+console.log(obj);
 
 </script>
