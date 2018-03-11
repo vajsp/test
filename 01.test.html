@@ -16,44 +16,14 @@
 </head>
 
 <body>
-    <div id="main">
+    <div id="main" draggable="true">
     </div>
 </body>
 
 </html>
 <script>
-const generatePage = function({
-    title = '',
-    entry = '',
-    template = './src/index.html',
-    name = '',
-    chunks = []
-} = {}) {
-    return {
-        entry,
-        chunks,
-        template,
-        filename: name + '.html'
-        /*plugins: [
-            new HtmlWebpackPlugin({
-                chunks,
-                template,
-                filename: name + '.html'
-            })
-        ]*/
-    }
-}
-
-
-var obj = generatePage({
-        title: 'page A',
-        entry: {
-            a: './src/pages/a'
-        },
-        name: 'a',
-        chunks:['react','a']
-    })
-
-console.log(obj);
-
+    var docElm = document.documentElement;
+        if (docElm.requestFullscreen) {
+            docElm.requestFullscreen();
+        }
 </script>
