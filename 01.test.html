@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <title>test</title>
-    <style>
-    #main {
-        width: 100px;
-        height: 100px;
-        padding: 50px;
-        background-color: yellow;
-        border: 1px solid red;
-    }
-    </style>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
 </head>
+<style>
+    .box {
+        width: 300px;
+        height: 200px;
+        border: 1px solid;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    /* .box:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    } */
+
+    .box div {
+        /* display:inline-block; */
+        width: 250px;
+        height: 40px;
+        border: 1px solid;
+        line-height: 40px;
+        vertical-align: middle;
+    }
+</style>
 
 <body>
-    <div id="main" draggable="true">
+    <div class="box">
+        <div>我是块元素我不受text-align控制</div>
+        <!-- <a href="#">我是行内元素</a> -->
     </div>
 </body>
 
 </html>
-<script>
-    var docElm = document.documentElement;
-        if (docElm.requestFullscreen) {
-            docElm.requestFullscreen();
-        }
-</script>

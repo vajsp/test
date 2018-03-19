@@ -1,30 +1,22 @@
-
-
-var total = 6;
-var cur = 3;
-var pageNum = 7;
-
-
-var rang = Math.floor(pageNum/2);
-
-// console.log(rang)
-var pageArry = [];
-
-var start = cur - rang;
-if (start<0) start = 1;
-if (start + pageNum > total) start = total - pageNum + 1;
-
-if (pageNum > total) {
-    start = 1;
-    for (let index = 0; index < total; index++) {
-        pageArry.push(start + index);
+var Person = (function () {
+    var instance
+    function init(name) {
+        return {
+            name: name
+        }
     }
-}else{
-    for (let index = 0; index < pageNum; index++) {
-        pageArry.push(start + index);
+
+    return {
+        createPerson: function (name) {
+            if (!instance) {
+                instance = init(name);
+            }
+            return instance
+        }
     }
-}
+})();
 
+var obj1 = Person.createPerson('xiaoming');
+var obj2 = Person.createPerson('limei');
 
-console.log(pageArry);
-
+console.log(obj1 === obj2)
