@@ -9,6 +9,13 @@
 <body>
     this要执行的时候，才能确认值
 
+    this的五种情况
+        1、fun内是window
+        2、严格模式下fun内是undefined
+        3、abc.fun() 内是abc。bind call apply也是一样的情况
+        4、new Fun()内的this是新生成的实例
+        5、箭头函数绑定了外部的this
+
     作用域
         没有块级作用域
         只有函数和全局作用域
