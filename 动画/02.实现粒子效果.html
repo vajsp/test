@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="theCanvas"></canvas>
+</body>
+
+</html>
+<script>
+    const theCanvas = document.getElementById('theCanvas'),
+        ctx = theCanvas.getContext('2d'),
+        mix = 6000;   //会产生连线的极限距离的平方
+    //将canvas铺满浏览器
+    let canvas_width = theCanvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        canvas_height = theCanvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
+        points = [];
+    theCanvas.style = "position: fixed; top: 0px; left: 0px;";
+    //绘制函数，用requestAnimationFrame调用实现动画
+    function draw() {
+        //清屏
+        ctx.clearRect(0, 0, canvas_width, canvas_height);
+        let i, pi, x_dist, y_dist;
+        //遍历点集合绘制线条
+        points.forEach((p, index) => {
+            // x,y表示定位
+            // xa,ya表示速度
+
+            p.x += p.xa,		//按指定速度移动
+                p.y += p.ya,
+                p.xa *= p.x > canvas_width || p.x < 0 ? -1 : 1,
+                p.ya *= p.y > canvas_height || p.y < 0 ? -1 : 1,
+                ctx.fillRect(p.x - 0.5, p.y - 0.5, 1, 1);		//绘制点，其实是小方块
+
+
+
+            // //类似于握手问题，两个点之间只绘制一次线
+            // for (i = index + 1; i < points.length; i++) {
+            //     pi = points[i];
+            //     x_dist = p.x - pi.x;
+            //     y_dist = p.y - pi.y;
+            //     dist = x_dist * x_dist + y_dist * y_dist;
+            //     //判断点之间的距离是否小于极限距离
+            //     if (dist < mix) {
+            //         ctx.beginPath();
+            //         ctx.moveTo(p.x, p.y);
+            //         ctx.lineTo(pi.x, pi.y);
+            //         ctx.stroke();
+            //     }
+            // }
+
+            for (i = index + 1; i < points.length; i++) {
+                pi = points[i];
+                x_dist = p.x - pi.x;
+                y_dist = p.y - pi.y;
+                dist = x_dist * x_dist + y_dist * y_dist;
+                //根据两点距离得到一个参数w
+                w = (mix - dist) / mix;
+                //判断点之间的距离是否小于极限距离
+                if (dist < mix) {
+                    ctx.beginPath();
+                    //根据参数w设置连线宽度和透明度
+                    ctx.lineWidth = w / 2;
+                    ctx.strokeStyle = `rgba(110,110,110,${w + 0.2})`;
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(pi.x, pi.y);
+                    ctx.stroke();
+                }
+            }
+
+        }), requestAnimationFrame(draw);
+    }
+    //随机生成100个点
+    for (let i = 0; i < 100; i++) {
+        let x = Math.random() * canvas_width,	//初始坐标
+            y = Math.random() * canvas_height,
+            xa = 2 * Math.random() - 1,			//x速度
+            ya = 2 * Math.random() - 1;			//y速度
+        points[i] = { x, y, xa, ya };
+    }
+    draw();
+</script>

@@ -6,68 +6,18 @@
     <title>JS Bin</title>
 </head>
 <style>
-    .box {
-        width: 300px;
-        height: 200px;
-        border: 1px solid;
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    /* .box:before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-    } */
-
-    .box div {
-        /* display:inline-block; */
-        width: 250px;
-        height: 40px;
-        border: 1px solid;
-        line-height: 40px;
-        vertical-align: middle;
+    p{
+        width: 200px;
+        border: 1px solid black;
+        word-break: break-word;
     }
 </style>
 
 <body>
-    <div class="box">
-        <div>我是块元素我不受text-align控制</div>
-        <!-- <a href="#">我是行内元素</a> -->
-    </div>
+    <p>aaaaa bbbbb ccccc dddddd eeeeee fffff ggggggg kkkkkkkk asdf asdf sadfdasfadffdsdf</p>
 </body>
 
 </html>
 <script>
-    var obj = {
-        index: '2',
-        type: 'global',
-        style: {
-            w: '800px',
-            h: '800px',
-            l: '200px',
-            t: '50px',
-            back: 'none',
-            text: '跳转场景0'
-        },
-        commonid: 'com0123',
-        logic: {
-            on: [{ event: 'datachange' }]
-        },
-        data: {
-            points: [
-                [{ name: '上海', value: [121.4648, 31.2891, 395] }],
-                [{ name: '北京', value: [116.4551, 40.2539, 395] }],
-                [{ name: '纽约', value: [-110.4651, 30.3373, 395] }],
-                [{ name: '拉萨', value: [91.1865, 30.1465, 50] }],
-                [{ name: '重庆', value: [107.7539, 30.1904, 120] }],
-                [{ name: '广州', value: [113.5107, 23.2196, 210] }]
-            ],
-            flyLines: [['上海', '北京'], ['上海', '纽约']]
-        }
-    }
-    var str = JSON.stringify(obj);
-    console.log(str);
+    
 </script>
