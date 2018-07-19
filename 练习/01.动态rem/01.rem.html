@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"> -->
+    <!-- 手动写meta标签 -->
+    <script>
+        // 不能加width=device-width，这样缩放就无效了
+        document.write(`
+            <meta name="viewport" content="initial-scale=${scale},maximum-scale=${scale},user-scalable=no">
+        `)
+    </script>
+    
+    <script>
+            var width = document.documentElement.clientWidth;
+            console.log('width');
+            console.log(width);
+            var scale = width/320;
+            var css = `
+                html{
+                    font-size: ${320*scale}px;
+                }
+            `;
+            document.write(`<style>${css}</style>`);
+             
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: white;
+            margin: 0;
+        }
+        #section1{
+            text-align: center;
+        }
+
+        #section1 .img{
+            width: 74px;
+            height: 74px;
+            margin: 0 auto;
+            margin-top: 60px;
+            border-radius: 50%;
+            margin-bottom: 34px;
+            background: blue;
+        }
+        #section1 .tags{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 16px;
+        }
+        #section1  span{
+            background: #D8D8D8;
+            width: 128px;
+            line-height: 24px;
+            height: 24px;
+            margin: 0 0 24px;
+        }
+
+        #section2 {
+            background: #EFEFEF;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        #section2 h2{
+            background: #d8d8d8;
+            display: inline-block;
+            width: 200px;
+            margin: 0 0 20px;
+            border-radius: 14px;
+            line-height: 40px;
+            height: 40px;
+        }
+
+        #section2 p{
+            background: #e8e8e8;
+            width: 250px;
+            display: inline-block;
+            margin: 0 0 20px;
+            line-height: 24px;
+            height: 24px;
+            border-radius: 14px;
+        }
+    </style>
+</head>
+<body>
+    <section id="section1">
+        <div class="img"></div>
+        <div class="tags">
+            <span>标签1</span>
+            <span>标签2</span>
+            <span>标签3</span>
+            <span>标签4</span>
+        </div>
+    </section>
+    <section id="section2">
+        <h2>文字文字文字</h2>
+        <h2>文字文字文字</h2>
+        <p>文字文字文字文字文字</p>
+        <p>文字文字文字文字文字</p>
+    </section>
+</body>
+</html>

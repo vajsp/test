@@ -4,7 +4,7 @@ function randomId(len) {
     var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz';    
     var maxPos = $chars.length;
     var pwd = '';
-    for (i = 0; i < len; i++) {
+    for (var i = 0; i < len; i++) {
         pwd +=  $chars.charAt(Math.floor(Math.random() * maxPos));
     }
     return new Date().getTime() + pwd + "";

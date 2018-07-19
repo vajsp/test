@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        .door-box {
+            max-width: 100%;
+            width: 375px;
+            height: 628px;
+            margin: 40px auto;
+            background-color: #2a273c;
+            font-family: STHeiTi, SimHei;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .door-box.active {
+            animation: flyIntoRoom 1s both;
+        }
+
+        .door-box div {
+            position: absolute;
+        }
+
+        .wall {
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 46px;
+            border-bottom: 3px solid #211820;
+            background-color: #768bb6;
+            max-height: calc(1.8 * (375px - 80px));
+            margin: auto;
+            box-shadow: 0 -200px #768bb6;
+        }
+
+        .door-border {
+            top: 28px;
+            left: 40px;
+            right: 40px;
+            bottom: 0;
+            border: 3px solid #211820;
+            border-radius: 2px 2px 0 0;
+            border-bottom: 0;
+            background-color: #183269;
+        }
+
+        .door-frame {
+            top: 10px;
+            left: 9px;
+            right: 9px;
+            bottom: 0;
+            border: 3px solid #211820;
+            border-radius: 2px 2px 0 0;
+            border-bottom: 0;
+            background-color: #fbfad0;
+            -webkit-perspective: 1200px;
+            perspective: 1200px;
+        }
+
+        .door {
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            transform-origin: left;
+            transform: rotateY(0deg);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .door-face-1,
+        .door-face-0 {
+            left: -3px;
+            top: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 3px solid #211820;
+            background-color: #295489;
+        }
+
+        .door-face-0 {
+            transform: translateZ(-12px);
+        }
+
+        .door-face-1 {
+            transform: translateZ(0);
+        }
+
+        .door-face-2 {
+            height: 6px;
+            left: -3px;
+            right: -3px;
+            top: 0;
+            border: 3px solid #211820;
+            border-radius: 2px;
+            background-color: #0c2e59;
+            transform: translate3D(0, -7.5px, -6px) rotateX(90deg);
+        }
+
+        .door-face-3 {
+            width: 6px;
+            top: -3px;
+            right: 0;
+            bottom: -3px;
+            border: 3px solid #211820;
+            border-radius: 2px;
+            background-color: #0c2e59;
+            transform: translate3D(7.5px, 0, -6px) rotateY(90deg);
+        }
+
+        /*光线*/
+
+        .light {
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: #F7E08F;
+            width: 1000px;
+            transform: translateZ(-13px);
+        }
+
+        /*门牌*/
+
+        .door-card {
+            width: 165px;
+            height: 60px;
+            line-height: 60px;
+            background-color: #c1d0ec;
+            top: 60px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            font-size: 30px;
+            border: 3px solid;
+            border-radius: 2px;
+        }
+
+        .door-btn {
+            left: 0;
+            right: 0;
+            text-align: center;
+            margin-top: 140px;
+            font-size: 24px;
+            color: #9dbce3;
+            line-height: 36px;
+        }
+
+        .door-in {
+            width: 104px;
+            height: 40px;
+            border-radius: 40px;
+            border: 2px solid;
+            line-height: 40px;
+            background-color: #eacc86;
+            font-family: inherit;
+            font-size: 24px;
+            padding: 0;
+            margin: 10px 0;
+        }
+        
+        /* 动画 */
+
+        @keyframes flyIntoRoom {
+            from {
+                transform: scale(1) translateZ(0);
+                opacity: 1;
+            }
+            to {
+                transform: scale(2) translateZ(100px);
+                opacity: 0;
+            }
+        }
+
+        .room-img {
+            position: absolute;
+            width: 375px;
+            height: 500px;
+            max-width: 100%;
+            left: 0;
+            right: 0;
+            top: 40px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="doorBox" class="door-box">
+        <div class="wall">
+            <div class="door-border">
+                <div class="door-frame">
+                    <!-- 门 -->
+                    <div id="door" class="door">
+                        <!-- 门后的光线 -->
+                        <div id="light" class="light" style="opacity: .8;" hidden=""></div>
+                        <!-- 门后 -->
+                        <div class="door-face-0"></div>
+                        <!-- 三个面 -->
+                        <div class="door-face-2"></div>
+                        <div class="door-face-1">
+                            <!-- 门上的挂牌 -->
+                            <div class="door-card">我的书房</div>
+                            <!-- 进入按钮 -->
+                            <div class="door-btn">
+                                <button id="doorBtnIn" class="door-in">进入</button>
+                            </div>
+                        </div>
+                        <div class="door-face-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 书房 -->
+    <div class="room-img" width="375" height="500">芝麻开门</div>
+</body>
+
+</html>
+
+<script>
+    // 门，光线这类运动元素
+    var eleDoor = document.getElementById('door');
+    var eleLight = document.getElementById('light');
+    var eleDoorBox = document.getElementById('doorBox');
+    // 开门音效mp3
+    var eleAudioOpen = document.getElementById('audioOpen');
+    // 开门动画
+    var percentDoor = 0;
+    var fnOpenDoor = function () {
+        percentDoor++;
+        // 门完全打开后，进入下一个画面
+        if (percentDoor == 100) {
+            eleDoorBox.classList.add('active');
+            return;
+        }
+        // 门打开
+        eleDoor.style.transform = 'rotateY(' + (-90 * percentDoor / 100) + 'deg)';
+        eleLight.removeAttribute('hidden');
+        // 光线变化
+        eleLight.style.opacity = 0.8 - 0.9 * percentDoor / 100;
+
+        setTimeout(fnOpenDoor, 16);
+    };
+    document.querySelector('#doorBtnIn').addEventListener('click', function () {
+        // eleAudioOpen.play();
+        fnOpenDoor();
+    });
+</script>
