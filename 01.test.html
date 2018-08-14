@@ -1,91 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
-    <canvas id="canvas"></canvas>
+    
 </body>
-
 </html>
-<script>
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext("2d");
-
-    canvas.width = 1200;
-    canvas.height = 700;
-
-    var center = { x: 600, y: 350 };
-
-    canvas.style.border = '1px solid black';
-
-    //2length为六边形边长
-    var length = 100;
-
-    var grad = context.createLinearGradient(length + center.x, 2 * length + center.y, -length + center.x, -2 * length + center.y);
-    /* 指定几个颜色 */
-    grad.addColorStop(0, '#257aa1');
-    grad.addColorStop(0.1, '#257aa1');
-    grad.addColorStop(1, '#17a24f');
-    var index = 0;
-    var indexNum = 0;
-    var num = 1;
-    var lock = true;
-
-    setInterval(function () {
-        // indexNum = index % 3;
-        indexNum = index;
-        index++;
-        render();
-        update();
-
-    }, 50)
-
-    function render() {
-        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        context.beginPath();
-        context.moveTo(length + center.x, 2 * length + center.y);
-        context.lineTo(2 * length + center.x, 0 + center.y);
-        context.lineTo(length + center.x, -2 * length + center.y);
-        context.lineTo(-length + center.x, -2 * length + center.y);
-        context.lineTo(-2 * length + center.x, 0 + center.y);
-        context.lineTo(-length + center.x, 2 * length + center.y);
-
-        context.strokeStyle = 'black';
-        context.fillStyle = grad;
-
-        context.closePath();
-        context.stroke();
-        context.fill();
-
-    }
-
-    function update() {
-        grad = context.createLinearGradient(length + center.x, 2 * length + center.y, -length + center.x, -2 * length + center.y);
-
-        if (lock) {
-            num++
-            if (num === 70) {
-                lock = false;
-            }
-        } else {
-            num--
-            if (num === 1) {
-                lock = true;
-            }
-        }
-
-        grad.addColorStop(0, '#257aa1');
-        grad.addColorStop(num / 100, '#257aa1');
-        grad.addColorStop(1, '#17a24f');
-
-    }
-
-
-
-</script>
