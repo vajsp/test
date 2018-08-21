@@ -1,14 +1,18 @@
-// var str = '-10.3千万';
+var i=0,j=100,k=100;
 
+function log(n) { 
+    var j = n;
+    // console.log(j); //__
+}
 
-// // var result = str.match(/\-?\d+\.?\d*/);
-// var result = str.match(/\D+$/)[0];
+for (let i = 0; i < 10; i++) {
+    var k = i;
+    log(k)
+}
 
-
-// console.log(result);
-
-var arr = ["aa","bb","cc","dd"]
-
-
-
-
+console.log('j');
+console.log(j);
+console.log('k');
+console.log(k);
+console.log('i');
+console.log(i);

@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
 <script>
 
-    
+    function drawStar(context,x,y,R,rot) { 
+        context.save();
+        context.translate(x, y);
+        context.rotate(rot/Math.PI * 180);
+        context.scale(R, R);
+        
+        startPath(cxt);
+        context.fillStyle='#fb3';
+        context.fill();
+        
+    }
 
-    
+
     function starPath(context) {
         context.beginPath();
         for (let i = 0; i < 5; i++) {
-            context.lineTo(Math.cos((18+i*72)/180*Math.PI), -Math.sin((18+i*72)/180 * Math.PI));
-            context.lineTo(Math.cos((54+i*72)/180*Math.PI), -Math.sin((54 + i*72)/180 * Math.PI));
+            context.lineTo(Math.cos((18 + i * 72) / 180 * Math.PI), -Math.sin((18 + i * 72) / 180 * Math.PI));
+            context.lineTo(Math.cos((54 + i * 72) / 180 * Math.PI), -Math.sin((54 + i * 72) / 180 * Math.PI));
         }
         context.closePath();
     }
-    
+
 </script>

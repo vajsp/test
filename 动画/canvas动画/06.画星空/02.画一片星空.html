@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+
+</html>
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+
+        canvas.width = 800;
+        canvas.height = 800;
+        var context = canvas.getContext('2d');
+
+        context.fillStyle = 'black';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < 200; i++) {
+            var r = Math.random() * 10 + 10;
+            var x = Math.random() * canvas.width;
+            var y = Math.random() * canvas.height;
+            var a = Math.random() * 360;
+
+            drawStar(context, x, y, r, r / 2.0, a);
+        }
+
+
+    }
+
+    function drawStar(context, x, y, R, r, rot) {
+        rot = 0 || rot;
+
+        context.beginPath();
+        for (let i = 0; i < 5; i++) {
+            context.lineTo(Math.cos((18 + i * 72 - rot) / 180 * Math.PI) * R + x,
+                -Math.sin((18 + i * 72 - rot) / 180 * Math.PI) * R + y);
+            context.lineTo(Math.cos((54 + i * 72 - rot) / 180 * Math.PI) * r + x,
+                -Math.sin((54 + i * 72 - rot) / 180 * Math.PI) * r + y);
+        }
+        context.closePath();
+
+        context.fillStyle = '#fb3';
+        context.strokeStyle = '#fd5';
+        context.lineWidth = 3;
+        context.lineJoin = 'round';
+
+        context.fill();
+        context.stroke();
+    }
+
+</script>
