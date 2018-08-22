@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            transform: rotate(45deg);
+            overflow: hidden;
+            border: 1px solid red;
+            position: relative;
+            top: 100px;
+            left: 100px;
+        }
+        .box > img {
+            max-width: 100%;
+            transform: rotate(-45deg) scale(1.42);
+        }
+    </style>
+    <h1>方法1 rotate方案</h1>
+    <div class="box">
+        <img src="./tu.gif" alt="">
+    </div>
+
+    <!-- 使用clip-path -->
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            /* transform: rotate(45deg); */
+            overflow: hidden;
+            /* border: 1px solid red; */
+            position: relative;
+            top: 200px;
+            left: 100px;
+        }
+        .box1 > img {
+            width: 100%;
+            clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%);
+            transition: 1s clip-path;
+        }
+        
+        .box1 > img:hover{
+            clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+        }
+
+        .title{
+            position: relative;
+            top: 160px;
+        }
+    </style>
+    <h1 class="title">方法2 使用clip-path方案</h1>
+    <div class="box1">
+        <img src="./tu.gif" alt="">
+    </div>
+</body>
+</html>

@@ -5,8 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        var css = `
+            html{
+                font-size:100px;
+            }
+        `;
+        document.write(`<style>${css}</style>`);
+    </script>
+    <style>
+        .box{
+            width: 6rem;
+            height: 1rem;
+            line-height: 1rem;
+            text-align: center;
+            border: 1px solid;
+            position: absolute;
+            top: 0.5rem;
+            left: 50%;
+            margin-left: -3rem;
+            font-size: 0.5rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        
+        .left{
+            float: left;
+        }
+
+        .right{
+            float: right;
+        }
+        
+    </style>
 </head>
 <body>
-    
+    <div class="box">
+        <div class="left">首页</div>
+        <div class="right">关于我们</div>
+    </div>
 </body>
 </html>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script>
+    var width = document.documentElement.clientWidth;
+    console.log(width);
+    window.onresize = function () { 
+        var widthScale = document.documentElement.clientWidth;
+        var scale = widthScale/1922;
+
+        // console.log(scale);
+        // // console.log(width);
+        // var css = `
+        //     html{
+        //         font-size:${100*scale}px;
+        //     }
+        // `;
+        // document.write(`<style>${css}</style>`);
+
+        $('html').css('fontSize',scale*100);
+    }
+</script>
