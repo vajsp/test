@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+
+</html>
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+
+        canvas.width = 800;
+        canvas.height = 800;
+
+        var context = canvas.getContext('2d');
+
+        drawRoundRect(context, 100, 100, 600, 500, 50);
+    }
+
+    function drawRoundRect(context, x, y, width, height, radius) {
+        context.save();
+        context.translate(x, y);
+        pathRoundRect(context, width, height, radius);
+        context.strokeStyle = 'black';
+        context.stroke();
+        context.restore();
+    }
+
+    function pathRoundRect(context, width, height, radius) {
+        context.beginPath();
+        context.arc(width - radius, height - radius, radius, 0, Math.PI / 2);
+        context.lineTo(radius, height);
+        context.arc(radius, height - radius, radius, Math.PI / 2, Math.PI);
+        context.lineTo(0, radius);
+        context.arc(radius, radius, radius, Math.PI, Math.PI * 3 / 2);
+        context.lineTo(width - radius, 0);
+        context.arc(width - radius, radius, radius, Math.PI * 3 / 2, Math.PI * 2);
+        context.closePath();
+    }
+
+
+    function fillRoundRect(context, x, y, width, height, radius,/* optional */fillColor) {
+        if (2 * radius > width || 2 * radius > height) return;
+        context.save();
+        context.translate(x, y);
+        pathRoundRect(context, width, height, radius);
+        context.fillStyle = fillColor || 'black';
+        context.fill();
+        context.restore();
+    }
+
+    function strokeRoundRect(context, x, y, width, height, radius,/* optional */lineWidth,/* option */strokeColor) {
+        if (2 * radius > width || 2 * radius > height) return;
+        context.save();
+        context.translate(x, y);
+        pathRoundRect(context, width, height, radius);
+        context.strokeStyle = strokeColor || 'black';
+        context.lineWidth = lineWidth || 2;
+        context.stroke();
+        context.restore();
+    }
+
+
+</script>
