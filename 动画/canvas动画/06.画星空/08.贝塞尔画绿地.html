@@ -23,10 +23,10 @@
         var canvas = document.getElementById('canvas');
 
         canvas.width = 1200;
-        canvas.height = 700;
+        canvas.height = 800;
         var context = canvas.getContext('2d');
 
-        var skyStyle =  context.createLinearGradient(0, 0, 0, canvas.height);
+        var skyStyle = context.createLinearGradient(0, 0, 0, canvas.height);
         skyStyle.addColorStop(0.0, 'black');
         skyStyle.addColorStop(1.0, '#035');
 
@@ -41,6 +41,8 @@
 
             drawStar(context, x, y, r, r / 2.0, a);
         }
+
+        drawLand(context);
 
     }
 
@@ -63,6 +65,27 @@
 
         context.fill();
         context.stroke();
+    }
+
+    function drawLand(context) {
+        console.log(123123);
+
+        context.save();
+
+        context.beginPath();
+        context.moveTo(0, 600);
+        context.bezierCurveTo(540, 400, 660, 800, 1200, 600);
+        context.lineTo(1200, 800);
+        context.lineTo(0, 800);
+        context.closePath();
+
+        var landStyle = context.createLinearGradient(0, 800, 0, 0);
+        landStyle.addColorStop(0.0, '#030');
+        landStyle.addColorStop(1.0, '#580');
+        context.fillStyle = landStyle;
+
+        context.fill();
+        context.restore();
     }
 
 </script>
