@@ -1,4 +1,4 @@
-var os=require("os");
+var os = require("os");
 
 var networkInterfaces = os.networkInterfaces();
 
@@ -9,4 +9,9 @@ for (const key in networkInterfaces) {
         macArr.push(networkInterfaces[key][0].mac);
     }
 }
-console.log(macArr);
+
+var mac = macArr[0].replace(/:/g, '-');
+
+
+console.log(mac);
+
