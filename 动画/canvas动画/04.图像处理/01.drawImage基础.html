@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: black;
+        }
+
+        #canvas,#watermark-canvas {
+            border: 1px solid red;
+        }
+
+        #range {
+            display: block;
+            margin: 20px auto;
+            width: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <input id="range" min="0.5" max="3.0" step="0.01" value="1" type="range">
+
+</body>
+
+</html>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var slider = document.getElementById('range');
+    var image = new Image();
+
+    window.onload = function () {
+        canvas.width = 1152;
+        canvas.height = 600;
+
+        image.src = "img.jpg";
+
+        var scale = slider.value;
+        console.log(scale);
+
+        image.onload = function () {
+            // context.drawImage(image, 50, 50, 500, 300);
+            // context.drawImage(image, 600, 200, 400, 400, 0, 0, canvas.width, canvas.height);
+            drawImageByScale(scale);
+
+            slider.onmousemove = function () { 
+                scale = slider.value;
+                drawImageByScale(scale);
+            }
+        }
+    }
+
+    function drawImageByScale(scale) {
+        var imageWidth = 1152 * scale;
+        var imageHeight = 600 * scale;
+
+        var sx = canvas.width / 2 - imageWidth / 2;
+        var sy = canvas.height / 2 - imageHeight / 2;
+
+        context.clearRect(0,0,canvas.width,canvas.height);
+
+        context.drawImage(image, sx, sy, imageWidth, imageHeight);
+
+    }
+</script>

@@ -10,8 +10,8 @@ for (const key in networkInterfaces) {
     }
 }
 
-var mac = macArr[0].replace(/:/g, '-');
+// var mac = macArr[0].replace(/:/g, '-');
 
 
-console.log(mac);
+console.log(macArr[0]);
 
