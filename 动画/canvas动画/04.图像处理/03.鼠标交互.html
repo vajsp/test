@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: black;
+        }
+
+        #canvas,
+        #watermark-canvas {
+            border: 1px solid red;
+        }
+
+        #range {
+            display: block;
+            margin: 20px auto;
+            width: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+
+</html>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var slider = document.getElementById('range');
+    var image = new Image();
+
+    var isMouseDown = null;
+
+    window.onload = function () {
+        canvas.width = 1152;
+        canvas.height = 600;
+
+        image.src = "img.jpg";
+
+        image.onload = function () {
+            context.drawImage(image, 0, 0);
+        }
+    }
+
+    function windowToCanvas(x, y) {
+        var bbox = canvas.getBoundingClientRect()
+        return {
+            x: x - bbox.left,
+            y: y - bbox.top
+        }
+    }
+
+    canvas.onmousedown = function (e) {
+        e.preventDefault();
+        
+        var point = windowToCanvas(e.clientX,e.clientY);
+        
+        console.log(point.x, point.y);
+
+        isMouseDown = true;
+    }
+
+    canvas.onmousemove = function (e) {
+        e.preventDefault();
+        
+        console.log(isMouseDown);
+        if (isMouseDown === true) {
+            var point =  windowToCanvas(e.clientX,e.clientY);
+            console.log(point.x, point.y);
+        }
+    }
+
+    canvas.onmouseup = function (e) {
+        e.preventDefault();
+        isMouseDown = false;
+    }
+
+    canvas.onmouseout = function (e) {
+        e.preventDefault();
+        isMouseDown = false;
+    }
+</script>

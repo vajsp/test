@@ -69,20 +69,18 @@
         watermarkContext.lineWidth = "1";
         watermarkContext.fillStyle = "rgba(255,255,255,0.5)";
         watermarkContext.textBaseline = "middle";
-        watermarkContext.fillText = "niky"
+        watermarkContext.fillText('巴拉巴拉小魔仙',20,50);
         
     }
 
     function drawImageByScale(scale) {
         var imageWidth = 1152 * scale;
         var imageHeight = 600 * scale;
-
         var sx = canvas.width / 2 - imageWidth / 2;
         var sy = canvas.height / 2 - imageHeight / 2;
-
         context.clearRect(0, 0, canvas.width, canvas.height);
-
         context.drawImage(image, sx, sy, imageWidth, imageHeight);
 
+        context.drawImage(watermarkCanvas, canvas.width - watermarkCanvas.width,canvas.height-watermarkCanvas.height);
     }
 </script>
