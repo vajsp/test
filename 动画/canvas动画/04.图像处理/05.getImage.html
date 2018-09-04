@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvasa,#canvasb{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin:20px auto; width:1700;">
+        <canvas id="canvasa" width="800" height="560" style=""></canvas>
+        <canvas id="canvasb" width="800" height="560" style=""></canvas>
+    </div>
+    <div style="clear:both"></div>
+    <div style="text-align:center;margin-top:50px;font-size:20px;">
+        <a href="">Filter</a>
+    </div>
+</body>
+
+</html>
+<script>
+    var canvasa = document.getElementById('canvasa');
+    var contexta = canvasa.getContext('2d');
+
+    var canvasb = document.getElementById('canvasb');
+    var contextb = canvasb.getContext('2d');
+
+    var image = new Image();
+
+    window.onload = function () {
+        image.src = './autumn.png';
+        image.onload = function () {
+            contexta.drawImage(image, 0, 0, canvasa.width, canvasb.height);
+        }
+    }
+
+    function filter() { 
+
+    }
+</script>
