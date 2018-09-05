@@ -7,21 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #canvasa,#canvasb{
+        #canvasa,
+        #canvasb {
             border: 1px solid black;
         }
     </style>
 </head>
 
 <body>
-    <div style="margin:20px auto; width:1700;">
+    <div style="margin:20px auto; width:1700px;">
         <canvas id="canvasa" width="800" height="560" style=""></canvas>
         <canvas id="canvasb" width="800" height="560" style=""></canvas>
     </div>
     <div style="clear:both"></div>
     <div style="text-align:center;margin-top:50px;font-size:20px;">
-        <a href="">Filter</a>
+        <div href="#" id="filter">Filter</div>
     </div>
+    <h2>要在服务器环境打开canvas getImageData方法存在跨域问题</h2>
 </body>
 
 </html>
@@ -41,7 +43,12 @@
         }
     }
 
-    function filter() { 
+    var filter = document.getElementById('filter');
 
+    filter.onclick = function filter() {
+        
+        var imageData = contexta.getImageData(0, 0, canvasa.width, canvasa.height);
+        console.log(imageData);
+        contextb.putImageData(imageData, 0, 0, 0, 0, canvasb.width , canvasb.height);
     }
 </script>
