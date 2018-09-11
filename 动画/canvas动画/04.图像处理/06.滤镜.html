@@ -47,7 +47,18 @@
 
     filter.onclick = function filter() {
         var imageData = contexta.getImageData(0, 0, canvasa.width, canvasa.height);
-        console.log(imageData);
-        contextb.putImageData(imageData, 0, 0, 0, 0, canvasb.width , canvasb.height);
+        var pixelData = imageData.data;
+
+        for (let i = 0; i < canvasb.width * canvasb.height; i++) {
+            // r通道
+            // pixelData[4 * i + 0] = 0;
+            // g通道
+            pixelData[4 * i + 1] = 0;
+            // b通道
+            // pixelData[4 * i + 2] = 0;
+            // a通道
+        }
+
+        contextb.putImageData(imageData, 0, 0, 0, 0, canvasb.width, canvasb.height);
     }
 </script>

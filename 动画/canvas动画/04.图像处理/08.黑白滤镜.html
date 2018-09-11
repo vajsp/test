@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvasa,
+        #canvasb {
+            border: 1px solid black;
+        }
+
+        .buttonBox a{
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin:20px auto; width:1700px;">
+        <canvas id="canvasa" width="800" height="560" style=""></canvas>
+        <canvas id="canvasb" width="800" height="560" style=""></canvas>
+    </div>
+    <div style="clear:both"></div>
+    <div class="buttonBox" style="text-align:center;margin-top:50px;font-size:20px;">
+        <a href="javascript:reset()">重置</a>
+        <a href="javascript:blackwhite()">黑白</a>
+        <a href="javascript:grey()">灰色</a>
+    </div>
+    <h2>要在服务器环境打开canvas getImageData方法存在跨域问题</h2>
+</body>
+
+</html>
+<script>
+    var canvasa = document.getElementById('canvasa');
+    var contexta = canvasa.getContext('2d');
+
+    var canvasb = document.getElementById('canvasb');
+    var contextb = canvasb.getContext('2d');
+
+    var image = new Image();
+
+    window.onload = function () {
+        image.src = './autumn.png';
+        image.onload = function () {
+            contexta.drawImage(image, 0, 0, canvasa.width, canvasb.height);
+        }
+    }
+
+    function reset() { 
+        contextb.clearRect(0, 0, canvasb.width, canvasb.height);
+    }
+    
+    function blackwhite() {
+        var imageData = contexta.getImageData(0, 0, canvasa.width, canvasa.height);
+        var pixelData = imageData.data;
+
+        for (let i = 0; i < canvasb.width * canvasb.height; i++) {
+            var r = pixelData[4 * i + 0];
+            var g = pixelData[4 * i + 1];
+            var b = pixelData[4 * i + 2];
+
+            var grey = r * 0.3 + g * 0.59 + b * 0.11;
+
+            if (grey > 255 / 2) {
+                v = 255;
+            } else {
+                v = 0;
+            }
+
+            pixelData[4 * i + 0] = v;
+            pixelData[4 * i + 1] = v;
+            pixelData[4 * i + 2] = v;
+        }
+        contextb.putImageData(imageData, 0, 0, 0, 0, canvasb.width, canvasb.height);
+    }
+
+    function grey() {
+        var imageData = contexta.getImageData(0, 0, canvasa.width, canvasa.height);
+        var pixelData = imageData.data;
+
+        for (let i = 0; i < canvasb.width * canvasb.height; i++) {
+            var r = pixelData[4 * i + 0];
+            var g = pixelData[4 * i + 1];
+            var b = pixelData[4 * i + 2];
+
+            var grey = r * 0.3 + g * 0.59 + b * 0.11;
+
+            pixelData[4 * i + 0] = grey;
+            pixelData[4 * i + 1] = grey;
+            pixelData[4 * i + 2] = grey;
+        }
+        contextb.putImageData(imageData, 0, 0, 0, 0, canvasb.width, canvasb.height);
+    }
+</script>
