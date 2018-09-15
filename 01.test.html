@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #box{
+        #box {
             width: 100px;
             height: 100px;
-            background: black;
+            /* background: black; */
+            color: yellow;
+            border: 1px solid black;
         }
-        #box2{
-            width: 100px;
-            height: 100px;
-            background: red;
+
+        .red {
+            animation: red 2s linear;
+        }
+
+        @keyframes red {
+            0% {
+                color: yellow;
+            }
+
+            100% {
+                color: red;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div id="box">
-
-    </div>
-    <div id="box2">
-
+    <div id="box" class="box">
+        你好
     </div>
 </body>
+
 </html>
 <script>
-    
-    function my(e,my) { 
-        console.log(123);
-        console.log(e);
-        console.log(my);
-    }
-
-    box.addEventListener('click', my) 
-
-    box2.onclick = function(){
-        my(123,456);
-    }
+    var box = document.getElementById('box');
+        
+    setTimeout(() => {
+        box.classList.add('red');
+    }, 2000);
 </script>

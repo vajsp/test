@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+        }
+
+        section {
+            width: 500px;
+            float: left;
+            /* border: 1px solid black; */
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>初始(渐变方案)</h1>
+        <style>
+            .box1 {
+                background: linear-gradient(-45deg, transparent 15px, #58a 0)
+            }
+        </style>
+        <div class="box1"></div>
+    </section>
+    <section>
+        <style>
+            .box2 {
+                background: linear-gradient(-45deg, transparent 25px, #585858 0) right,
+                    linear-gradient(45deg, transparent 25px, #cccccc 0) left;
+                background-size: 50% 100%;
+                background-repeat: no-repeat;
+            }
+        </style>
+        <h1>线性渐变 linear-gradient实现(渐变方案)</h1>
+        <div class="box2"></div>
+    </section>
+    <section>
+        <h1>四角渐变(渐变方案)</h1>
+        <style>
+            .box3 {
+                background:
+                    linear-gradient(135deg, transparent 15px, #58a 0) top left,
+                    linear-gradient(-135deg, transparent 15px, #58a 0) top right,
+                    linear-gradient(-45deg, transparent 15px, #58a 0) bottom right,
+                    linear-gradient(45deg, transparent 15px, #58a 0) bottom left;
+
+                background-size: 50% 50%;
+                background-repeat: no-repeat;
+            }
+        </style>
+        <div class="box3"></div>
+    </section>
+    <section>
+        <h1>圆角渐变 (渐变方案)</h1>
+        <style>
+            .box4 {
+                background:
+                    radial-gradient(circle at top left, transparent 25px, yellow 0) top left,
+                    radial-gradient(circle at top right, transparent 25px, yellow 0) top right,
+                    radial-gradient(circle at bottom right, transparent 25px, yellow 0) bottom right,
+                    radial-gradient(circle at bottom left, transparent 25px, yellow 0) bottom left;
+
+                background-size: 50% 50%;
+                background-repeat: no-repeat;
+            }
+        </style>
+        <div class="box4"></div>
+    </section>
+    <section>
+        <h1>clip-path方案</h1>
+        <style>
+            .box5 {
+                background: #58a;
+                clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px,
+                    100% calc(100% - 20px), calc(100% - 20px) 100%,
+                    20px 100%, 0 calc(100% - 20px), 0 20px);
+            }
+        </style>
+        <div class="box5"></div>
+    </section>
+</body>
+
+</html>
