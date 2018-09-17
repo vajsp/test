@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        section {
+            width: 400px;
+            height: 300px;
+            border: 1px solid black;
+            float: left;
+            margin: 10px;
+        }
+
+        .box {
+            width: 300px;
+            height: 200px;
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>没有任何投影绘制在元素的下层</h1>
+    <section>
+        <h3>初始</h3>
+        <style>
+            .box1 {
+                box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+            }
+        </style>
+        <div class="box box1"></div>
+    </section>
+    <section>
+        <h3>单侧投影-设置了box-shadow的第四个参数</h3>
+        <style>
+            .box2 {
+                box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.5);
+            }
+        </style>
+        <div class="box box1"></div>
+    </section>
+    <section>
+        <h3>临边投影</h3>
+        <style>
+            .box3 {
+                box-shadow: 3px 3px 6px -3px rgba(0, 0, 0, 0.5);
+            }
+        </style>
+        <div class="box box3"></div>
+    </section>
+    <section>
+        <h3>临边投影</h3>
+        <style>
+            .box4 {
+                box-shadow: 5px 0 5px -5px black,
+                            -5px 0 5px -5px black;
+            }
+        </style>
+        <div class="box box4"></div>
+    </section>
+</body>
+
+</html>

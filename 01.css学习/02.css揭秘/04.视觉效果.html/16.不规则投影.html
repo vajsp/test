@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+        }
+
+        section {
+            width: 500px;
+            float: left;
+            margin: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>box-shadow</h1>
+        <style>
+            .box3 {
+                background:
+                    linear-gradient(135deg, transparent 15px, #58a 0) top left,
+                    linear-gradient(-135deg, transparent 15px, #58a 0) top right,
+                    linear-gradient(-45deg, transparent 15px, #58a 0) bottom right,
+                    linear-gradient(45deg, transparent 15px, #58a 0) bottom left;
+
+                background-size: 50% 50%;
+                background-repeat: no-repeat;
+                box-shadow: 2px 2px 10px rgba(0,0,0,.5);
+            }
+        </style>
+        <div class="box3"></div>
+    </section>
+    <section>
+        <h1>drop-shadow方案</h1>
+        <style>
+            .box4 {
+                background:
+                    linear-gradient(135deg, transparent 15px, #58a 0) top left,
+                    linear-gradient(-135deg, transparent 15px, #58a 0) top right,
+                    linear-gradient(-45deg, transparent 15px, #58a 0) bottom right,
+                    linear-gradient(45deg, transparent 15px, #58a 0) bottom left;
+
+                background-size: 50% 50%;
+                background-repeat: no-repeat;
+                filter: drop-shadow(2px 2px 10px rgba(0,0,0,.5));
+            }
+        </style>
+        <div class="box4"></div>
+    </section>
+</body>
+
+</html>

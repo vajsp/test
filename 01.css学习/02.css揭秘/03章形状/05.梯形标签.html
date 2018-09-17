@@ -8,9 +8,10 @@
     <title>梯形标签</title>
     <style>
         section {
-            width: 400px;
-            height: 400px;
+            width: 150px;
+            height: 150px;
             border: 1px solid red;
+            float: left;
         }
     </style>
 </head>
@@ -44,6 +45,39 @@
             }
         </style>
         <div class="tab">第一次</div>
+    </section>
+    <section>
+        <style>
+            .nav {
+                position: relative;
+                display: inline-block;
+                padding: .5em 1em .35em;
+                /* width: 200px;
+                        height: 50px; */
+                color: white;
+                /* background: green; */
+                text-align: center;
+            }
+
+            .nav::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: -1;
+                background: #ccc;
+                background-image: linear-gradient(hsla(0, 0%, 100%, .6), hsla(0, 0%, 100%, 0));
+                border: 1px solid rgba(0, 0, 0, 0.4);
+                border-bottom: none;
+                border-radius: .5em .5em 0 0;
+                box-shadow: 0 .15em white inset;
+                transform: perspective(.5em) rotateX(5deg);
+                transform-origin: bottom;
+            }
+        </style>
+        <div class="nav">about</div>
     </section>
 </body>
 
