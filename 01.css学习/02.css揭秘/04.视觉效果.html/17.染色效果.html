@@ -6,11 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    
+    <style>
+        section{
+            width: 33%;
+            float: left;
+            margin-right: 2px;
+        }
+        section img{
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-    
+    <section>
+        <h2>滤镜filter方案</h2>
+        <style>
+            .img1{
+                transition: .5s filter;
+                filter: sepia(1) saturate(4) hue-rotate(295deg);
+            }
+            .img1:hover,
+            .img1:focus{
+                filter: none;
+            }
+        </style>
+        <img class="img1" src="../image.jpg" alt="">
+    </section>
+    <section>
+        <h1>混合模式</h1>
+        <style>
+            .abiaoqian{
+                display: block;
+                background: hsl(335,100%,50%);
+            }
+            .img2{
+                mix-blend-mode: luminosity;
+            }
+        </style>
+        <a class="abiaoqian" href="#">
+            <img class="img2" src="../image.jpg" alt="">
+        </a>
+    </section>
 </body>
 
 </html>
