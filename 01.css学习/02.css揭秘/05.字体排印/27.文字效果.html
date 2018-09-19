@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        section {
+            width: 20%;
+            float: left;
+            margin: 20px;
+            height: 200px;
+            line-height: 200px;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        .aotu {
+            background: hsl(210, 13%, 40%);
+            color: hsl(210, 13%, 75%);
+            text-shadow: 0 -1px 1px black;
+        }
+    </style>
+    <section class="aotu">
+        凹凸效果
+    </section>
+    <style>
+        .kongxin {
+            font: 500%/1 Rockwell, serif;
+            background: deeppink;
+            color: white;
+        }
+
+        .kongxin text {
+            fill: currentColor;
+        }
+
+        .kongxin svg {
+            overflow: hidden;
+        }
+
+        .kongxin use {
+            stroke: black;
+            stroke-width: 6;
+            stroke-linejoin: round;
+        }
+    </style>
+    <section class="kongxin">
+        <svg width='2em' height='1.2em'>
+            <use xlink:href="#css"></use>
+            <text id="css" y="1em">CSS</text>
+        </svg>
+    </section>
+    <style>
+        .faguang {
+            background: #203;
+            color: white;
+            transition: 1s;
+        }
+
+        .faguang:hover {
+            text-shadow: 0 0 0.1em, 0 0 0.3em;
+        }
+    </style>
+    <section class="faguang">
+        发光1
+    </section>
+    <style>
+        .faguang1 {
+            background: #203;
+            color: white;
+            transition: 1s;
+        }
+
+        .faguang1:hover {
+            color: transparent;
+            text-shadow: 0 0 0.1em white, 0 0 0.3em white;
+        }
+    </style>
+    <section class="faguang1">
+        发光（shadow）
+    </section>
+    <style>
+        .faguang2 {
+            background: #203;
+            color: white;
+            transition: 1s;
+        }
+
+        .faguang2:hover {
+            filter: blur(0.1em);
+        }
+    </style>
+    <section class="faguang2">
+        发光（blur）
+    </section>
+    <style>
+        .faguang3{
+            background: #58a;
+            color: white;
+            text-shadow:  
+                0 1px hsl(0,0%,85%),
+                0 2px hsl(0,0%,80%),
+                0 3px hsl(0,0%,75%),
+                0 4px hsl(0,0%,75%),
+                0 5px hsl(0,0%,70%),
+                0 5px 10px black;
+        }
+    </style>
+    <section class="faguang3">
+        文字凸起效果
+    </section>
+</body>
+
+</html>
