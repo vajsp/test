@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+            background: yellow;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            cursor: pointer;
+            /* 扩展代码 */
+            border: 10px solid transparent;
+            background-clip: padding-box;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, .3) inset,
+                    0 0.1em 0.2em -0.05em rgba(0, 0, 0, .5);
+        }
+
+        .box2{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+            background: yellowgreen;
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            transform: translate(-50%,-50%);
+            cursor: pointer;
+        }
+        
+        .box2::before{
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            left: -20px;
+            bottom: -20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    边框扩大
+</div>
+
+<div class="box2">
+    伪元素
+</div>
+</body>
+
+</html>

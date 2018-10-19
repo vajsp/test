@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #box {
-            width: 100px;
-            height: 100px;
-            /* background: black; */
-            color: yellow;
-            border: 1px solid black;
+        li{
+            border: 1px solid;
+            float: left;
+            list-style: none;
+            width: 30px;
         }
-
-        .red {
-            animation: red 2s linear;
+        
+        /* 奇数 */
+        li:nth-child(odd){
+            border-color: red;
+            height: 50px;
         }
-
-        @keyframes red {
-            0% {
-                color: yellow;
-            }
-
-            100% {
-                color: red;
-            }
+        /* 3.3 3.6 */
+        /* 偶数 */
+        li:nth-child(even){
+            border-color: green;
+            width: 30px;
+            height: 80px;
         }
     </style>
 </head>
-
 <body>
-    <div id="box" class="box">
-        你好
-    </div>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
 </body>
-
 </html>
 <script>
-    var box = document.getElementById('box');
-        
-    setTimeout(() => {
-        box.classList.add('red');
-    }, 2000);
+    var liArr = document.getElementsByTagName('li');
+    console.log(liArr);
 </script>

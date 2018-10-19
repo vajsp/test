@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        li{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            list-style: none;
+            margin: 2px;
+        }
+        li:nth-child(1){
+            cursor: crosshair;
+        }
+        li:nth-child(2){
+            cursor: help;
+        }
+        li:nth-child(3){
+            cursor: move;
+        }
+        li:nth-child(4){
+            cursor: pointer;
+        }
+        li:nth-child(5){
+            cursor: progress;
+        }
+        li:nth-child(6){
+            cursor: text;
+        }
+        li:nth-child(7){
+            cursor: wait;
+        }
+        li:nth-child(8){
+            cursor: e-resize;
+        }
+        li:nth-child(9){
+            cursor: ne-resize;
+        }
+        li:nth-child(10){
+            cursor: nw-resize;
+        }
+        li:nth-child(11){
+            cursor: n-resize;
+        }
+        li:nth-child(12){
+            cursor: se-resize;
+        }
+        li:nth-child(13){
+            cursor: sw-resize;
+        }
+        li:nth-child(14){
+            cursor: s-resize;
+        }
+        li:nth-child(15){
+            cursor: w-resize;
+        }
+
+        li:nth-child(16){
+            cursor: none;
+        }
+        li:nth-child(17){
+            cursor: context-menu;
+        }
+        li:nth-child(18){
+            cursor: cell;
+        }
+        li:nth-child(19){
+            cursor: vertical-text;
+        }
+        li:nth-child(20){
+            cursor: alias;
+        }
+        li:nth-child(21){
+            cursor: copy;
+        }
+        li:nth-child(22){
+            cursor: no-drop;
+        }
+        li:nth-child(23){
+            cursor: not-allowed;
+        }
+        li:nth-child(24){
+            cursor: ew-resize;
+        }
+        li:nth-child(25){
+            cursor: ns-resize;
+        }
+        li:nth-child(26){
+            cursor: nesw-resize;
+        }
+        li:nth-child(27){
+            cursor: nwse-resize;
+        }
+        li:nth-child(28){
+            cursor: col-resize;
+        }
+        li:nth-child(29){
+            cursor: row-resize;
+        }
+        li:nth-child(30){
+            cursor: all-scroll;
+        }
+        li:nth-child(31){
+            cursor: zoom-in;
+        }
+        li:nth-child(32){
+            cursor: zoom-out;
+        }
+        :disabled,[disabled],[aria-disabled='true']{
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>crosshair</li>
+        <li>help</li>
+        <li>move</li>
+        <li>pointer</li>
+        <li>progress</li>
+        <li>text</li>
+        <li>wait</li>
+        <li>e-resize</li>
+        <li>ne-resize</li>
+        <li>nw-resize</li>
+        <li>n-resize</li>
+        <li>se-resize</li>
+        <li>sw-resize</li>
+        <li>s-resize</li>
+        <li>w-resize</li>
+        <li>none</li>
+        <li>context-menu</li>
+        <li>cell</li>
+        <li>vertical-text</li>
+        <li>alias</li>
+        <li>copy</li>
+        <li>no-drop</li>
+        <li>not-allowed</li>
+        <li>ew-resize</li>
+        <li>ns-resize</li>
+        <li>nesw-resize</li>
+        <li>nwse-resize</li>
+        <li>col-resize</li>
+        <li>row-resize</li>
+        <li>all-scroll</li>
+        <li>zoom-in</li>
+        <li>zoom-out</li>
+    </ul>
+    <button disabled>提交</button>
+</body>
+</html>
