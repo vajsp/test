@@ -1,13 +1,9 @@
-const fs = require('fs');
-const path = require('path')
-
-var readStream = fs.createReadStream(path.resolve( __dirname + '/img.jpg'));
-
-// console.log(data);
-
-readStream.on("data",(data)=>{
-    console.log("数据来了！");
-    console.log("已经读取的字节数",readStream.bytesRead);
-})
+for (var i = 0; i < 10; ++i) {
+    ((i) => {
+        setTimeout(() => {
+            console.log(i);
+        }, 0);
+    })(i);
+}
 
 
