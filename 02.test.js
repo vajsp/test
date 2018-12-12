@@ -1,14 +1,11 @@
 var obj = {
-    name: 'tom'
-}    
-
-var  fn1 = function(){
-    console.log(this)
-}
-var fn2 = () => {
-    console.log(this)
+    set x(value){
+        return value
+    },
+    get x(){
+        return x
+    }
 }
 
-fn1()
-fn1.call(obj)
-fn2.call(obj)
+obj['x'] = 2;
+console.log(obj['x']);
