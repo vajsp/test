@@ -1,11 +1,11 @@
-var obj = {
-    set x(value){
-        return value
-    },
-    get x(){
-        return x
-    }
+function People(name){
+    this.name = name;
 }
 
-obj['x'] = 2;
-console.log(obj['x']);
+People.prototype.sayName = function () { 
+    console.log(this.name);
+}
+
+var liming = new People('liming');
+
+liming.sayName();
