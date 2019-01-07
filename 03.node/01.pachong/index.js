@@ -1,19 +1,24 @@
 var fs = require('fs');
 const cheerio = require('cheerio');
 const axios = require('axios');
-
+var moment = require('moment');
+var path = require('path');
 var dataArr = [];
+
+
+// endPage最小值为1，第一页
+var endPage = 7;
 
 
 
 (async () => {
-    var res = await axios.get(`https://xiaoluoli99.xyz`);
-    const $ = cheerio.load(res.data);
-    var pageNum = $('.page-number-js').attr('data-max');
-    var promiseArr = []; 
+    var promiseArr = [];
 
-    for (let i = 0; i < 20; i++) {
-        promiseArr.push(getOneListContent(i));
+    // 设置页码
+    for (let i = 0; i < endPage; i++) {
+        // setTimeout(() => {
+            promiseArr.push(getOneListContent(i));
+        // }, i*1000);
     }
 
     Promise.all(promiseArr).then((res) => {
@@ -25,7 +30,7 @@ var dataArr = [];
         exportJson(newArr);
         console.log('完成');
     })
-})()
+})();
 
 
 async function getOneListContent(pageNum) {
@@ -50,6 +55,7 @@ async function getOneListContent(pageNum) {
     })
 
     async function getOneDetail(obj) {
+
         let imgSrc = obj['attribs']['data-original'];
         let detailSrc = obj['parent']['attribs']['href'];
 
@@ -57,8 +63,8 @@ async function getOneListContent(pageNum) {
         const $ = cheerio.load(res.data);
 
         var title = $('h1').text();
-        var videoSrc = $('video').attr('src');
-        var videoOriginName = videoSrc.match(/\d+(\.\w+)$/g)[0];
+        var videoSrc = $('video').attr('src').replace('?end=120', '');
+        var videoOriginName = videoSrc.match(/\w+(\.mp4)$/g);
         var dateOrigin = $('.single-cat').text();
         var date = dateOrigin.match(/\d+-\d+-\d+/g)[0];
 
@@ -72,14 +78,21 @@ async function getOneListContent(pageNum) {
 
         listArr.push(moveInfo);
     }
+
 }
 
 
-
 function exportJson(dataArr) {
-    fs.readFile(__dirname + "/data.json", 'utf8', function (err, data) {
-        if (err) console.log(err);
-        var t = JSON.stringify(dataArr);
-        fs.writeFileSync(__dirname + '/data.json', t)
-    });
+
+    var time = moment().format('YYYY-MM-DD&&HH-mm-ss');
+    var pathPlus = path.resolve(__dirname, `./data/${time}.json`);
+    var content = JSON.stringify(dataArr);
+
+    fs.writeFile(pathPlus, content, function (error) {
+
+        if (error) {
+            console.log(error);
+            return false;
+        }
+    })
 }
