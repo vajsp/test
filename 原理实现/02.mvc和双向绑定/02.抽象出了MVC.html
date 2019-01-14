@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ex2</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id="status"></div>
+</body>
+
+</html>
+<script>
+    let row = {
+        data: {
+            id: 1,
+            name: 'JavaScript高级程序设计',
+            number: 2
+        }
+    }
+
+
+    let model = {
+        data: {
+            number: 0,
+            name: ''
+        },
+        fetchDb(id) {
+            return new Promise((reslove) => {
+                reslove(row)
+            })
+        },
+        update(newData) {
+            return new Promise((reslove) => {
+                data = Object.assign(row.data, newData)
+                reslove(data);
+            })
+        }
+    }
+
+    let view = {
+        el: '#app',
+        template: `
+            <div>
+                书名：《__name__》，
+                数量：__number__
+                </div>
+                <div class="actions">
+                <button id="increaseByOne">加1</button>
+                <button id="decreaseByOne">减1</button>
+                <button id="square">平方</button>
+                <button id="cube">立方</button>
+                <button id="reset">归零</button>
+            </div>
+        `,
+        render(h) {
+            let html = this.template.replace('__name__', data.name)
+                .replace('__number__', data.number)
+            console.log(data)
+            $(this.el).html(html)
+        }
+    }
+
+    var controller = {
+        init({ view , model }) {
+            this.view = view
+            this.model = model
+            this.view.render(this.model.data)
+            this.bindEvents()
+            console.log(1);
+            this.fetchModel();
+            console.log(2);
+        },
+        events: [{
+                type: 'click',
+                selector: '#increaseByOne',
+                fnName: 'add'
+            },
+            {
+                type: 'click',
+                selector: '#decreaseByOne',
+                fnName: 'minus'
+            },
+            {
+                type: 'click',
+                selector: '#square',
+                fnName: 'square'
+            },
+            {
+                type: 'click',
+                selector: '#cube',
+                fnName: 'cube'
+            },
+        ],
+        bindEvents() {
+            this.events.map((event) => {
+                $(this.view.el).on(event.type, event.selector, this[event.fnName].bind(this))
+            })
+        },
+        add() {
+            let newData = {
+                number: this.model.data.number + 1
+            }
+            this.updateModel(newData)
+        },
+        minus() {
+            let newData = {
+                number: this.model.data.number - 1
+            }
+            this.updateModel(newData)
+        },
+        square() {
+            let newData = {
+                number: Math.pow(this.model.data.number, 2)
+            }
+            this.updateModel(newData)
+        },
+        cube() {
+            let newData = {
+                number: Math.pow(this.model.data.number, 3)
+            }
+            this.updateModel(newData)
+        },
+        fetchModel() {
+            this.model.fetch(1).then(() => {
+                this.view.render(this.model.data)
+            })
+        },
+        updateModel(newData) {
+            this.model.update(newData).then(() => {
+                this.view.render(this.model.data)
+            })
+        }
+    }
+</script>

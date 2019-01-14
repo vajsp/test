@@ -1,33 +1,11 @@
-function curry(fn) {
-    var length = 0;
-    var enter = [];
-    var define = fn.length;
+var a = [1, 2, 3];
 
-    return function nihao() {
 
-        length += arguments.length;
-
-        var arr = Array.from(arguments);
-        enter = enter.concat(arr);
-
-        if (length >= define) {
-            return fn.apply(null, enter);
-        } else {
-            return nihao
-        }
+Array.prototype.joins = function (str) { 
+    var result = this[0] || '';
+    var length = this.length;
+    
+    for (let i = 0; i < length; i++) {
+        result 
     }
 }
-
-var abc = function (a, b, c) {
-    return [a, b, c];
-}
-
-var add = function (x, y) {
-    return x + y
-}
-
-var curried = curry(abc);
-console.log(curried(1)(2)(3));
-
-var curried1 = curry(add);
-console.log(curried1(4)(5));
