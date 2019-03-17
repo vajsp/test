@@ -7,7 +7,7 @@ var dataArr = [];
 
 
 // endPage最小值为1，第一页
-var endPage = 1;
+var endPage = 12;
 
 
 
@@ -15,9 +15,9 @@ var endPage = 1;
     var promiseArr = [];
 
     // 设置页码
-    for (let i = 0; i < endPage; i++) {
+    for (let i = 6; i < endPage; i++) {
         // setTimeout(() => {
-            promiseArr.push(getOneListContent(i));
+        promiseArr.push(getOneListContent(i));
         // }, i*1000);
     }
 
@@ -55,6 +55,7 @@ async function getOneListContent(pageNum) {
     })
 
     async function getOneDetail(obj) {
+        var reg = /\/|\\/g;
 
         let imgSrc = obj['attribs']['data-original'];
         let detailSrc = obj['parent']['attribs']['href'];
@@ -62,7 +63,7 @@ async function getOneListContent(pageNum) {
         var res = await axios.get(detailSrc);
         const $ = cheerio.load(res.data);
 
-        var title = $('h1').text();
+        var title = $('h1').text().replace(reg, '');
         var videoSrc = $('video').attr('src').replace('?end=120', '');
         var videoOriginName = videoSrc.match(/\w+(\.mp4)$/g);
         var dateOrigin = $('.single-cat').text();

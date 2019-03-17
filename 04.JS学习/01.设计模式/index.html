@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>媒介管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/bootstrap.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/font-awesome.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/ionicons.css">
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/init.css">
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/app.css">
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/bootstrap-datetimepicker.min.css">
+
+    <!-- Font Awesome -->
+    <!-- Ionicons -->
+    <link href="/admin/plugin/iCheck/red.css" rel="stylesheet">
+    <!-- jQuery 3 -->
+    <script src="http://sunac-medium-test.canskj.cn/admin/js/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="http://sunac-medium-test.canskj.cn/admin/js/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+
+
+    <!-- Bootstrap 3.3.7 -->
+    <script src="http://sunac-medium-test.canskj.cn/admin/js/bootstrap.min.js"></script>
+    <!-- <script src="http://sunac-medium-test.canskj.cn/admin/js/app.js"></script> -->
+    <!-- <script src="./js/app.js"></script> -->
+
+    <script src="http://sunac-medium-test.canskj.cn/admin/js/bootstrap-select.js"></script>
+    <script src="http://sunac-medium-test.canskj.cn/admin/js/bootstrap-datetimepicker.js"></script>
+    <script src="http://sunac-medium-test.canskj.cn/admin/js/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <script type="text/javascript" src="/admin/plugin/layer/layer.js"></script>
+
+    <link rel="stylesheet" href="/admin/plugin/datetimepicker/bootstrap-datetimepicker.min.css">
+
+
+    <script src="/admin/plugin/datetimepicker/bootstrap-datetimepicker.js"></script>
+    <script src="/admin/plugin/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.3/dist/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.3/dist/jquery.fancybox.min.css" />
+
+
+
+    <script type="text/javascript" src="/admin/js/jquery.form.js"></script>
+
+
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/index.css">
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/js/iCheck/all.css">
+    <!--checkbox样式-->
+    <link href="http://sunac-medium-test.canskj.cn/admin/iCheck/red.css" rel="stylesheet">
+    <!-- iCheck -->
+    <script src="http://sunac-medium-test.canskj.cn/admin/iCheck/icheck.min.js"></script>
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/my.css?v5">
+
+    <link rel='stylesheet' href="http://sunac-medium-test.canskj.cn/admin/css/fullcalendar.min.css" />
+    <script src="http://sunac-medium-test.canskj.cn/admin/js/moment.min.js"></script>
+
+
+    <!-- 2019-02-25 新增 -->
+    <script src="http://sunac-medium-test.canskj.cn/admin/js/select2.min.js"></script>
+    <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/select2.min.css">
+
+    <!-- tooltips -->
+    <link rel="stylesheet" href="./js/tooltip/tooltip.css">
+    <script src="./js/tooltip/tooltip.js"></script>
+    
+    <style>
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            color: black;
+        }
+
+        .up-down-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            vertical-align: bottom;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .down-icon {
+            background-image: url('http://sunac-medium-test.canskj.cn/admin/img/down.png');
+        }
+
+        .up-icon {
+            background-image: url('http://sunac-medium-test.canskj.cn/admin/img/up.png');
+        }
+
+        .more-select {
+            display: none;
+        }
+
+        .load-more {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-image: url('http://sunac-medium-test.canskj.cn/admin/img/more.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .more-hide {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-image: url('http://sunac-medium-test.canskj.cn/admin/img/more-hide.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .more-wrapper {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .treeview-menu > li:hover{
+            /* background-color: #081b33; */
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .treeview-menu > li > a:hover{
+            color: #fe4848 !important;
+            border-left: 2px #fe4848 solid;
+        }
+        .sidebar-menu > li:hover{
+            background-color:#001d26;
+            color: #11add9;
+        }
+        .dBlue a:hover, .dBlue a:active{
+            background-color:transparent; 
+            color: #11add9;
+            border-left: 2px #11add9 solid;
+        }
+
+        /* .treeview-menu{
+            display: block !important;
+        } */
+
+        .wmWrapper div {
+            color: rgba(170, 170, 170,0.5) !important;
+        }
+
+        .fc-content{
+            box-sizing: border-box;
+            padding-right: 20px;
+            position: relative;
+            overflow: hidden;
+            width: 82%;
+            position: relative;
+            /* white-space: normal !important; */
+        }
+
+        .deleteEvent{
+            background: url('./img/delete.png') no-repeat center center;
+            background-size: 100% 100%;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%; 
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -7px;
+        }
+
+        .fc-content span {
+            /* white-space: nowrap; */
+            overflow: hidden;
+            /* text-overflow: ellipsis; */
+        }
+        
+        .popCard{
+            width: 200px;
+            background: white;
+            position: absolute;
+            z-index: 100;
+            border: 1px solid red;
+            border-color: #43a3eb;
+            box-shadow: #ada2a2 0px 0px 10px;
+            border-radius: 6px;
+            top: 50%;
+            left: 50%;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 10px;
+        }
+
+        .popCard h4 {
+            font-weight: bold;
+        }
+
+        .popCard div {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding-left: 56px;
+        }
+
+        .popCard div p{
+            position: absolute;
+            left: 20px;
+        }
+
+        .popCard p{
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <div class="popCard" >
+        <h4>YY日常维护彭建</h4>
+        <div>护说明：请彭建吃饭</div>
+        <p>礼品：3232元</p>
+        <p>其他：1235元</p>
+        <p>餐费：2689元</p>
+        <p>旅费：4174元</p>
+    </div> -->
+    <div class="wrapper">
+        <header class="main-header header-bg float-c f-white">
+            <section class="float-l">
+                <p class="header-title">媒介管理系统</p>
+            </section>
+            <section class="float-r header-info">
+                <div>2019年03月 星期一 您好， WX
+                </div>
+
+                <div class="header-btn-area dropdown">
+
+                    <a href="http://sunac-medium-test.canskj.cn/admin/password">修改密码</a>
+
+
+
+                    <a href="#" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true"><i class="fa fa-bell"></i>通知()</a>
+
+                    <a href="http://sunac-medium-test.canskj.cn/logout"><i class="fa fa-share-square-o"></i>退出</a>
+                </div>
+            </section>
+        </header>
+        <aside class="main-sidebar dBlue">
+            <ul class="sidebar-menu " id="sidebar-menu" data-widget="tree" data-accordion="false">
+                <li>
+                    <a href="#">
+                        <i class=""></i>
+                        <span>首页</span>
+                    </a>
+
+                </li>
+                <li class="treeview  ">
+                    <a>
+                        <i class=""></i>
+                        <span>维护</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li><a href="#">维护记录</a></li>
+                        <li><a href="#">费用清单</a></li>
+                    </ul>
+                </li>
+                <li class="treeview  ">
+                    <a>
+                        <i class=""></i>
+                        <span>媒体资料</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li><a href="#">媒体人</a></li>
+                        <li><a href="#">媒体频道</a></li>
+                        <li><a href="#">媒体公司</a></li>
+                        <li><a href="#">业务条线</a></li>
+                    </ul>
+                </li>
+                <li class="treeview  ">
+                    <a href="#">
+                        <i class=""></i>
+                        <span>公关</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li><a href="#">公关人员</a></li>
+                        <li><a href="#">公关公司</a></li>
+                    </ul>
+                </li>
+                <li class="treeview  ">
+                    <a>
+                        <i class=""></i>
+                        <span>系统</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li><a href="#">用户</a></li>
+                        <li><a href="#">角色</a></li>
+                        <li><a href="#">系统日志</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </aside>
+        <div class="content-wrapper" id="content-wrapper">
+            <div class="content-body">
+                <section class="content-header">
+                    <h1></h1>
+                    <ol class="breadcrumb">
+                        <li class="active"> 首页 </li>
+                    </ol>
+
+                </section>
+                <script src="http://sunac-medium-test.canskj.cn/admin/js/moment.min.js"></script>
+                <script src="http://sunac-medium-test.canskj.cn/admin/js/fullcalendar.min.js"></script>
+                <script src="http://sunac-medium-test.canskj.cn/admin/js/zh-cn.js"></script>
+                <script src="http://sunac-medium-test.canskj.cn/admin/js/echarts.js"></script>
+                <script src="http://sunac-medium-test.canskj.cn/admin/js/select2.min.js"></script>
+                <link rel="stylesheet" href="http://sunac-medium-test.canskj.cn/admin/css/select2.min.css">
+                <style>
+                    .g_activityTime,
+                    .g_activityEndTime {
+                        width: 150px;
+                        display: inline-block;
+                    }
+
+                    .btn-group {
+                        width: 150px;
+                    }
+
+                    .split {
+                        margin: 0 5px;
+                    }
+
+                    .js-example-basic-multiple {
+                        width: 150px;
+                        /* height: 34px; */
+                    }
+
+                    /* hover效果 */
+                    .fc-day:hover {
+                        background-color: #eee;
+                    }
+
+                    .fc-slats tr:hover {
+                        background-color: #eee;
+                    }
+
+                    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+                        color: black;
+                    }
+
+                    .btn-active {
+                        background-color: #43a3eb !important;
+                    }
+                    
+
+                    /*.rank .part-body{
+                        /* height: 250px; 
+                        min-height: 490px;
+                        /* max-height: 490px; 
+                    }*/
+                                    /*.chart-layout{
+                        display: table;
+                        width: 100%;
+                    }
+                    .chart-layout > section{
+                        display: table-cell;
+                    }*/
+                </style>
+                <section class="chart-layout" style="display:table;width: 100%;">
+                    <!-- <section class="p-l-none" style="padding-right:10px;display: table-cell;"> -->
+                        <div class="tranformation m-t-none" style="margin-right:10px;display: table-cell;">
+                            <div class="part-title">
+                                <span class="part-title-icon"></span>
+                                <span class="main">任务进度</span>
+                                <span class="sub"></span>
+                            </div>
+                            <div class="part-content">
+                                <!-- <div class="part-control">控制器</div> -->
+                                <div class="row">
+                                    <div class="col-md-2 part-people">
+                                        <!-- 如果是公关人员不再显示 -->
+                                        <div class="control-item">
+                                            <label class="item-label">公关人员</label>
+                                            <select class="js-example-basic-multiple" name="states[]"
+                                                multiple="multiple" id="selectpicker" style="display: none;">
+                                                <option value="0">YLP</option>
+                                                <option value="1">ZDP</option>
+                                                <option value="2">LXJ</option>
+                                                <option value="3">CXL</option>
+                                                <option value="4">YY</option>
+                                                <option value="5">WX</option>
+                                                <option value="6">知心</option>
+                                                <option value="7">天下</option>
+                                                <option value="8">WN</option>
+                                                <option value="9">ZXR</option>
+                                                <option value="10">sd</option>
+                                                <option value="11">测试</option>
+                                                <option value="12">111</option>
+                                                <option value="13">丁</option>
+                                                <option value="14">测试</option>
+                                                <option value="15">测试11</option>
+                                                <option value="16">ce</option>
+                                                <option value="17">测试添加</option>
+                                                <option value="18">6666</option>
+                                                <option value="19">测试新增</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="control-item time">
+                                            <label class="item-label">开始时间</label>
+
+                                            <input type="text" name="startTime" value="2019-03-01" placeholder='开始时间'
+                                                readonly="true" class="form-control g_activityTime">
+                                            <!-- todo -->
+                                        </div>
+
+                                        <div class="control-item time">
+                                            <label class="item-label">结束时间</label>
+                                            <input type="text" name="startTime" value="2019-03-31" placeholder='结束时间'
+                                                readonly="true" class="form-control g_activityEndTime">
+                                        </div>
+                                        <div class="control-item btn-group">
+                                            <button type="button" class="btn btn-primary btn-lg active btn-item "
+                                                id="curWeek" typetime="curYear">今年</button>
+                                            <button type="button" class="btn btn-primary btn-lg active btn-item "
+                                                id="prevWeek" typetime="prevYear">去年</button>
+                                        </div>
+
+                                        <div class="control-item btn-group">
+                                            <button type="button"
+                                                class="btn btn-primary btn-lg active btn-item  btn-active " id="curMon"
+                                                typetime="curMon">本月</button>
+                                            <button type="button" class="btn btn-primary btn-lg active btn-item "
+                                                id="prevMon" typetime="prevMon">上月</button>
+                                        </div>
+
+                                        <div class="control-item btn-group">
+                                            <button type="button" class="btn btn-primary btn-lg active btn-item "
+                                                id="curWeek" typetime="curWeek">本周</button>
+                                            <button type="button" class="btn btn-primary btn-lg active btn-item "
+                                                id="prevWeek" typetime="prevWeek">上周</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 part-body">
+                                        <div class="bar-stacked" id="chartsBar" style="height:350px">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    <!-- </section> -->
+                    <div style="width:20px;display:table-cell;background-color: #EFF5FC;"></div>
+                    <section class="rank m-t-none" id="r-wraning" style="width: 300px; display: table-cell;">
+                        <div class="part-title">
+                            <span class="part-title-icon"></span>
+                            <span class="main">媒体预警</span>
+                        </div>
+                        <div class="part-body">
+                            <div class="mission-remind" style="height:auto;">
+                                <div class="mission-remind-row">
+                                    <div class="mission-remind-tag">凤凰财经</div>
+                                    <div class="mission-remind-content">财经证券<strong class="split">|</strong>武晨<strong
+                                            class="split">|</strong>6天未维护</div>
+                                </div>
+                                <div class="mission-remind-row">
+                                    <div class="mission-remind-tag">新浪乐居</div>
+                                    <div class="mission-remind-content">房产<strong class="split">|</strong>孔令薇<strong
+                                            class="split">|</strong>6天未维护</div>
+                                </div>
+                                <div class="mission-remind-row">
+                                    <div class="mission-remind-tag">新华社</div>
+                                    <div class="mission-remind-content">社会时政<strong class="split">|</strong>鞠靖<strong
+                                            class="split">|</strong>6天未维护</div>
+                                </div>
+                                <div class="mission-remind-row">
+                                    <div class="mission-remind-tag">经济观察报</div>
+                                    <div class="mission-remind-content">房产<strong class="split">|</strong>田国宝<strong
+                                            class="split">|</strong>6天未维护</div>
+                                </div>
+                                <div class="mission-remind-row">
+                                    <div class="mission-remind-tag">经济观察报</div>
+                                    <div class="mission-remind-content">财经证券<strong class="split">|</strong>文钊<strong
+                                            class="split">|</strong>6天未维护</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align:right;" id="more-btn"><a
+                                href="http://sunac-medium-test.canskj.cn/mediapeople/index">查看更多>></a></div>
+                    </section>
+                    
+                </section>
+
+                <section class="section-mission pull-left" style="margin-top:10px">
+                    <div class="part-title">
+                        <span class="part-title-icon"></span>
+                        <span class="main">任务日历</span>
+                    </div>
+                    <div class="part-body">
+                        <div class="z-select" style="width: 10%; float: left;text-align: center;">
+                            <div class="btn-group-vertical z-group" role="group">
+
+                            </div>
+                        </div>
+
+                        <div id="calendar" style="width: 90%; float: right;"></div>
+                    </div>
+                </section>
+
+                <!-- /.content-wrapper -->
+                <input id="list" name="list" type="hidden"
+                    value="[{&quot;id&quot;:2,&quot;name&quot;:&quot;YLP&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(245, 138, 75)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;ZDP&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(90, 129, 33)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;LXJ&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(74, 170, 206)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;CXL&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(184, 78, 157)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;YY&quot;,&quot;events&quot;:[{&quot;title&quot;:&quot;YY \u65e5\u5e38\u7ef4\u62a4 \u5218\u575a\u3001\u6587\u948a\u3001\u97a0\u9756\u3001\u5b54\u4ee4\u8587\u3001\u6b66\u6668&quot;,&quot;task_id&quot;:87,&quot;start&quot;:&quot;2019-02-26&quot;,&quot;end&quot;:null},{&quot;title&quot;:&quot;YY \u7b54\u8c22 \u6587\u948a\u3001\u7530\u56fd\u5b9d&quot;,&quot;task_id&quot;:88,&quot;start&quot;:&quot;2019-02-26&quot;,&quot;end&quot;:null}],&quot;color&quot;:&quot;rgb(119, 66, 169)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:8,&quot;name&quot;:&quot;WX&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;#fcc100&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:10,&quot;name&quot;:&quot;\u77e5\u5fc3&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;#c63947&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:11,&quot;name&quot;:&quot;\u5929\u4e0b&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;#4270a9&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:12,&quot;name&quot;:&quot;WN&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;#4eb89e&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:13,&quot;name&quot;:&quot;ZXR&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;#f54ba3&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:115,&quot;name&quot;:&quot;sd&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(178, 13, 71)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:117,&quot;name&quot;:&quot;\u6d4b\u8bd5&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(216, 19, 90)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:121,&quot;name&quot;:&quot;111&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(157, 50, 131)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:122,&quot;name&quot;:&quot;\u4e01&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(217, 111, 191)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:123,&quot;name&quot;:&quot;\u6d4b\u8bd5&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(84, 35, 130)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:124,&quot;name&quot;:&quot;\u6d4b\u8bd511&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(210, 181, 59)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:133,&quot;name&quot;:&quot;ce&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(160, 26, 26)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:134,&quot;name&quot;:&quot;\u6d4b\u8bd5\u6dfb\u52a0&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(246, 200, 17)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:138,&quot;name&quot;:&quot;6666&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(207, 36, 36)&quot;,&quot;textColor&quot;:&quot;white&quot;},{&quot;id&quot;:139,&quot;name&quot;:&quot;\u6d4b\u8bd5\u65b0\u589e&quot;,&quot;events&quot;:[],&quot;color&quot;:&quot;rgb(242, 102, 91)&quot;,&quot;textColor&quot;:&quot;white&quot;}]">
+                <input id="task" name="task" type="hidden"
+                    value="{&quot;max&quot;:{&quot;count_max&quot;:5,&quot;all_money&quot;:50},&quot;admin_name&quot;:{&quot;2&quot;:&quot;YLP&quot;,&quot;3&quot;:&quot;ZDP&quot;,&quot;4&quot;:&quot;LXJ&quot;,&quot;6&quot;:&quot;CXL&quot;,&quot;7&quot;:&quot;YY&quot;,&quot;8&quot;:&quot;WX&quot;,&quot;10&quot;:&quot;\u77e5\u5fc3&quot;,&quot;11&quot;:&quot;\u5929\u4e0b&quot;,&quot;12&quot;:&quot;WN&quot;,&quot;13&quot;:&quot;ZXR&quot;,&quot;115&quot;:&quot;sd&quot;,&quot;117&quot;:&quot;\u6d4b\u8bd5&quot;,&quot;121&quot;:&quot;111&quot;,&quot;122&quot;:&quot;\u4e01&quot;,&quot;123&quot;:&quot;\u6d4b\u8bd5&quot;,&quot;124&quot;:&quot;\u6d4b\u8bd511&quot;,&quot;133&quot;:&quot;ce&quot;,&quot;134&quot;:&quot;\u6d4b\u8bd5\u6dfb\u52a0&quot;,&quot;138&quot;:&quot;6666&quot;,&quot;139&quot;:&quot;\u6d4b\u8bd5\u65b0\u589e&quot;},&quot;task_count&quot;:{&quot;2&quot;:0,&quot;3&quot;:0,&quot;4&quot;:0,&quot;6&quot;:0,&quot;7&quot;:0,&quot;8&quot;:0,&quot;10&quot;:0,&quot;11&quot;:0,&quot;12&quot;:0,&quot;13&quot;:0,&quot;115&quot;:0,&quot;117&quot;:0,&quot;121&quot;:0,&quot;122&quot;:0,&quot;123&quot;:0,&quot;124&quot;:0,&quot;133&quot;:0,&quot;134&quot;:0,&quot;138&quot;:0,&quot;139&quot;:0},&quot;task_media_people_count&quot;:{&quot;2&quot;:0,&quot;3&quot;:0,&quot;4&quot;:0,&quot;6&quot;:0,&quot;7&quot;:0,&quot;8&quot;:0,&quot;10&quot;:0,&quot;11&quot;:0,&quot;12&quot;:0,&quot;13&quot;:0,&quot;115&quot;:0,&quot;117&quot;:0,&quot;121&quot;:0,&quot;122&quot;:0,&quot;123&quot;:0,&quot;124&quot;:0,&quot;133&quot;:0,&quot;134&quot;:0,&quot;138&quot;:0,&quot;139&quot;:0},&quot;all_money&quot;:{&quot;2&quot;:0,&quot;3&quot;:0,&quot;4&quot;:0,&quot;6&quot;:0,&quot;7&quot;:0,&quot;8&quot;:0,&quot;10&quot;:0,&quot;11&quot;:0,&quot;12&quot;:0,&quot;13&quot;:0,&quot;115&quot;:0,&quot;117&quot;:0,&quot;121&quot;:0,&quot;122&quot;:0,&quot;123&quot;:0,&quot;124&quot;:0,&quot;133&quot;:0,&quot;134&quot;:0,&quot;138&quot;:0,&quot;139&quot;:0}}">
+
+                <script>
+                    $(document).ready(function () {
+                        // $('#sidebar-menu > li').find('ul').show();
+                        //去除空格和换行
+                        function clearBrAndTrim(key){
+                            key = key.replace(/<\/?.+?>/g,""); 
+                            key = key.replace(/[\r\n]/g, "");
+                            key = key.replace(/(^\s*)|(\s*$)/g,"");
+                            return key; 
+                        }
+                        //去重
+                        function uniqArr(arr){
+                            var result = arr.filter(function(el,index,array){
+                                return array.indexOf(el)>=index;
+                            })
+                            return result;
+                        }
+                        
+                        var clickedArr = [];
+                        var oldSelectedArr = JSON.parse(window.sessionStorage.getItem('oldShow'));
+                        if(oldSelectedArr&&oldSelectedArr.length){
+                            clickedArr = oldSelectedArr;
+                        }
+                        //导航切换效果
+                        $('#sidebar-menu > li').click(function(e){
+                            console.log(e.currentTarget, e.target);
+                            var selectedTitle = $(e.currentTarget).children().eq(0).text();
+                            if(!$(e.currentTarget).find('ul').is(':hidden')){
+                                var index = clickedArr.indexOf(clearBrAndTrim(selectedTitle));
+                                if(index>-1){
+                                    clickedArr.splice(index,1);
+                                }
+                                $(e.currentTarget).find('ul').hide(500);
+                            }else{
+                                clickedArr.push(clearBrAndTrim(selectedTitle));
+                                $(e.currentTarget).find('ul').show(500);
+                            }
+                            window.sessionStorage.setItem('oldShow',JSON.stringify(uniqArr(clickedArr)));
+                        })
+                        $('.treeview-menu a').click(function(e){
+                            // console.log('3434')
+                            e.stopPropagation();
+                        })
+
+                        $('#sidebar-menu > li').each(function(index,val){
+                            var txt = clearBrAndTrim($(val).children().eq(0).text());
+                            if(oldSelectedArr&&oldSelectedArr.indexOf(txt)>-1){
+                                if($(val).find('ul').is(':hidden')){
+                                    $(val).find('ul').show();
+                                }
+                            }
+                        })
+                        
+
+                        $("#selectpicker").val();
+                        $('.js-example-basic-multiple').select2();
+                        //CR改变
+                        // var xData = ['WX','CXL','WN','HD','YW','HH'],
+                        //     countData = [2, 4, 7, 23, 25, 76],//维护次数
+                        //     peopleData = [175, 182, 48, 18, 6, 2],//维护人数
+                        //     costData = [20.3, 23.4, 23.0, 16.5, 12.0, 6.2],//花费
+                        //     checkedPeopleArr = [];
+
+                        //获得数据信息
+                        var task = $('#task').val();
+                        task = JSON.parse(task);
+
+                        var xData = [];
+                        var id = [];
+                        for (var i in task.admin_name) {
+                            xData.push(task.admin_name[i]);
+                            id.push(i);
+                        }
+
+                        var countData = [];//维护次数
+                        for (var i in task.task_count) {
+                            countData.push(task.task_count[i]);
+                        }
+                        var peopleData = [];//维护人数
+                        for (var i in task.task_media_people_count) {
+                            peopleData.push(task.task_media_people_count[i]);
+                        }
+                        var costData = [];//花费
+                        for (var i in task.all_money) {
+                            costData.push(task.all_money[i]);
+                        }
+                        // console.log(xData, countData, peopleData, costData, id);
+                        // console.log(task.max);
+                        // console.log(task.max.all_money);
+                        var num1 = task.max.count_max ? task.max.count_max : 5;
+                        var spend1 = task.max.all_money ? task.max.all_money : 50;
+
+                        function fRandomBy(under, over) {
+                            switch (arguments.length) {
+                                case 1: return parseInt(Math.random() * under + 1);
+                                case 2: return parseInt(Math.random() * (over - under + 1) + under);
+                                default: return 0;
+                            }
+                        }
+
+                        //改变图表参数函数
+                        function changeOption(xData, countData, peopleData, costData, num = num1, spend = spend1) {
+                            return {
+                                color: ['#c32c37', '#ff9900', '#286090'],
+                                tooltip: {
+                                    trigger: 'axis',
+                                    axisPointer: {
+                                        type: 'cross',
+                                        crossStyle: {
+                                            color: '#999'
+                                        }
+                                    }
+                                },
+
+                                legend: {
+                                    data: ['维护次数', '维护人数', '维护花费']
+                                },
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        data: xData,
+                                        axisPointer: {
+                                            type: 'shadow'
+                                        }
+                                    }
+                                ],
+                                yAxis: [
+                                    {
+                                        type: 'value',
+                                        name: '次数/人数',
+                                        min: 0,
+                                        max: num,
+                                        interval: num / 5,
+                                        axisLabel: {
+                                            // formatter: '{value} ml'
+                                            formatter: '{value}'
+                                        }
+                                    },
+                                    {
+                                        type: 'value',
+                                        name: '花费',
+                                        min: 0,
+                                        max: spend,
+                                        interval: spend / 5,
+                                        axisLabel: {
+                                            // formatter: '{value} °C'
+                                            formatter: '{value} 元'
+                                        }
+                                    }
+                                ],
+                                series: [
+                                    {
+                                        name: '维护次数',
+                                        type: 'bar',
+                                        data: countData
+                                    },
+                                    {
+                                        name: '维护人数',
+                                        type: 'bar',
+                                        data: peopleData
+                                    },
+                                    {
+                                        name: '维护花费',
+                                        type: 'bar',
+                                        yAxisIndex: 1,
+                                        data: costData
+                                    }
+                                ]
+                            };
+                        }
+
+                        //生成模拟数据
+                        function generateData(arr, type) {
+                            if (type === 'checkedPeopleData') {
+                                return arr.map(function (val, index) {
+                                    return xData[parseInt(val)]
+                                })
+                            } else if (type === 'countData') {
+                                return arr.map(function (val, index) {
+                                    //return fRandomBy(0,250)
+                                    return countData[parseInt(val)]
+                                })
+                            } else if (type === 'peopleData') {
+                                return arr.map(function (val, index) {
+                                    //return fRandomBy(0,250)
+                                    return peopleData[parseInt(val)]
+                                })
+                            } else if (type === 'costData') {
+                                return arr.map(function (val, index) {
+                                    //return fRandomBy(0,25)
+                                    return costData[parseInt(val)]
+                                })
+                            } else if (type === 'adminId') {
+                                return arr.map(function (val, index) {
+                                    return id[parseInt(val)]
+                                })
+                            } else {
+                                return null;
+                            }
+
+                        }
+
+                        var chartsBar = echarts.init(document.getElementById('chartsBar'));
+                        chartsBar.setOption(changeOption(xData, countData, peopleData, costData));
+
+                        //下拉多选改变时调用
+                        $('#selectpicker').on('change', function (e) {
+                            var val = $('#selectpicker').val();
+                            checkedPeopleArr = val;
+                            console.log(val);
+                            // 被选中的人数
+                            var checkedPeopleData = generateData(val, 'checkedPeopleData');
+                            var countData = generateData(val, 'countData');
+                            var peopleData = generateData(val, 'peopleData');
+                            var costData = generateData(val, 'costData');
+
+                            var admin_id = generateData(val, 'adminId');//获得查询人员的id
+                            console.log(val, admin_id);
+
+                            var startTime = 2019 - 03 - 01
+                            var endTime = 2019 - 03 - 31
+
+                            //location.href="http://sunac-medium-test.canskj.cn?admin_id="+admin_id+"&startTime="+startTime+"&endTime="+endTime+"&id="+val;
+                            chartsBar.setOption(changeOption(checkedPeopleData, countData, peopleData, costData));
+                        });
+
+                        $(".g_activityTime").datetimepicker({
+                            minView: "month",
+                            language: 'zh-CN',
+                            format: 'yyyy-mm-dd',
+                            autoclose: true,
+                            todayBtn: true,
+                            minView: 3,
+                            minuteStep: 10,
+                            pickerPosition: "bottom-left"
+                        }).on('changeDate', function (ev) {
+                            var starttime = $(".g_startTime").val();
+                            $(".g_endTime").datetimepicker('setStartDate', starttime);
+                            $(".g_startTime").datetimepicker('hide');
+                        });
+
+                        // 活动时间
+                        $(".g_activityEndTime").datetimepicker({
+                            minView: "month",
+                            language: 'zh-CN',
+                            format: 'yyyy-mm-dd',
+                            autoclose: true,
+                            todayBtn: true,
+                            minView: 3,
+                            minuteStep: 10,
+                            pickerPosition: "bottom-left"
+                        }).on('changeDate', function (ev) {
+                            //开始时间与结束时间
+                            var startTime = $(".g_activityTime").val();
+                            var endTime = $(".g_activityEndTime").val();
+
+                            var val = $('#selectpicker').val();
+
+                            var admin_id = generateData(val, 'adminId');//获得查询人员的id
+                            console.log(val, admin_id);
+
+                            location.href = "http://sunac-medium-test.canskj.cn?admin_id=" + admin_id + "&startTime=" + startTime + "&endTime=" + endTime + "&id=" + val;
+
+
+                            //选择结束时间时变换图标数据
+                            var checkedPeopleData = checkedPeopleArr.length ? generateData(checkedPeopleArr, 'checkedPeopleData') : xData;
+                            var countData = checkedPeopleArr.length ? generateData(checkedPeopleArr, 'countData') : generateData(xData, 'countData');
+                            var peopleData = checkedPeopleArr.length ? generateData(checkedPeopleArr, 'peopleData') : generateData(xData, 'peopleData');
+                            var costData = checkedPeopleArr.length ? generateData(checkedPeopleArr, 'costData') : generateData(xData, 'costData');
+
+                            chartsBar.setOption(changeOption(checkedPeopleData, countData, peopleData, costData));
+
+                            // console.log(startTime, endTime)
+                            var starttime = $(".g_startTime").val();
+                            $(".g_endTime").datetimepicker('setStartDate', starttime);
+                            $(".g_startTime").datetimepicker('hide');
+                        });
+
+                        //按钮循环点击（本周 上周 本月 上月）
+                        $('.btn-item').each(function (index, val) {
+
+                            $(val).click(function () {
+                                $('.btn-item').each(function () {
+                                    $(this).removeClass('btn-active');
+                                })
+                                $(this).addClass('btn-active');
+
+
+                                var a_id = $('#selectpicker').val();
+                                var admin_id = generateData(a_id, 'adminId');//获得查询人员的id
+                                //console.log(val,admin_id,a_id,index);
+                                //获得该元素的属性 index 一次是0-5
+
+                                location.href = "http://sunac-medium-test.canskj.cn?admin_id=" + admin_id + "&typeTime=" + index + "&id=" + a_id;
+
+                                var checkedPeopleData = checkedPeopleArr.length ? generateData(checkedPeopleArr, 'checkedPeopleData') : xData;
+                                var countData = checkedPeopleArr.length ? generateData(checkedPeopleArr, 'countData') : generateData(xData, 'countData');
+                                var peopleData = checkedPeopleArr.length ? generateData(checkedPeopleArr, 'peopleData') : generateData(xData, 'peopleData');
+                                var costData = checkedPeopleArr.length ? generateData(checkedPeopleArr, 'costData') : generateData(xData, 'costData');
+
+                                chartsBar.setOption(changeOption(checkedPeopleData, countData, peopleData, costData));
+                            })
+                        })
+
+                        //调取数据库
+                        function getSearchData() {
+
+                            var val = $('#selectpicker').val();
+
+                            var admin_id = generateData(val, 'adminId');//获得查询人员的id
+                            console.log(admin_id);
+                            window.href = "http://sunac-medium-test.canskj.cn?admin_id=" + admin_id + "&startTime=" + startTime + "&endTime=" + endTime;
+
+                        }
+                    });
+
+                </script>
+                <script>
+                    $(document).ready(function () {
+
+                        //  日历事件********************************************
+
+                        // fullCalendar插件国际化中文
+                        var initialLocaleCode = 'zh-cn';
+
+                        var getdata = [{
+                            events: [ // put the array in the `events` property
+                                {
+                                    title: '阳光行 YLP 李辉、秦时 测试',
+                                    start: '2019-01-01',
+                                    end: '2019-01-04'
+                                },
+                                {
+                                    title: '日常维护 YLP 秦风、尚蓝',
+                                    start: '2019-01-20'
+                                }
+                            ],
+                            id: 1,
+                            name: 'YLP',
+                            color: '#9966FF',     // an option!
+                            textColor: 'black' // an option!
+                        }, {
+                            events: [ // put the array in the `events` property
+                                {
+                                    title: '健康行 ZDP 李辉、秦时 测试',
+                                    start: '2019-01-08',
+                                    end: '2019-01-12'
+                                },
+                                {
+                                    title: '日常维护 ZDP 秦风、尚蓝',
+                                    start: '2019-01-23'
+                                }
+                            ],
+                            id: 2,
+                            name: 'ZDP',
+                            color: '#CCCCFF',     // an option!
+                            textColor: 'black' // an option!
+                        }]
+
+                        var list = $('#list').val();
+                        getdata = JSON.parse(list);
+
+                        // 添加测试数据
+                        getdata.forEach(function (ele) { 
+                            if (ele.id === 7) {
+                                ele.events.forEach(function (elem) { 
+                                    elem['content'] = '<h3>YY日常维护彭建</h3>维护说明：请张总吃饭<br/>礼品：3202元<br/>其他：2568元<br/>餐费：2567元<br/>旅费：785元';
+                                })
+                            }
+                        })
+
+                        console.log('getdata');
+                        console.log(getdata);
+                        
+                        setFull(getdata);
+
+                        var lock = true
+                        
+                        function setFull(data) {
+                            
+                            $('#calendar').fullCalendar({
+                                eventAfterRender: function(data,element,e){
+                                    //data 这个日程对应的数据   element 日程对应的dom元素   e 事件
+                                    var $this = $(element);
+                                    //通过 操作 $this 可以从新定义dom  
+                                    // 通过 wz_title wz_name 自定义css样式  例如：
+                                    // $this.html("<div class='nnn'>删除</div>"); 
+                                    $this.html($this.html()+"<div class='deleteEvent'></div>");
+                                    //绑定事件
+                                    // bingEvent($this);
+                                    // delEvent(id)
+                                },
+                                header: {
+                                    left: 'prev,next today',
+                                    center: 'title',
+                                    right: 'month,agendaWeek,agendaDay,listMonth'
+
+                                },
+                                defaultDate: "2019-03-04",
+                                locale: initialLocaleCode,
+                                buttonIcons: true, // show the prev/next text
+                                weekNumbers: true,
+                                navLinks: true, // can click day/week names to navigate views
+                                editable: false,
+                                eventLimit: true, // allow "more" link when too many events
+                                eventSources: data||'http://api/path',
+                                eventClick: function (event, jsEvent, view) {
+                                    
+                                    if(jsEvent.target.className === 'deleteEvent'){
+                                        // 删除项目
+                                        var index = window.confirm('确定删除该项目？');
+                                        if (index) {
+                                            $('#calendar').fullCalendar( 'removeEvents',event._id);
+                                        }
+                                    }else{
+                                        location.href = "http://sunac-medium-test.canskj.cn/activity/update?id=" + event.task_id;
+                                    }
+                                },
+                                eventMouseover: function (event, jsEvent, view) {  //title以HTML显示（换行）
+                                    // var $target = $(jsEvent.target);
+                                    // var text = $(jsEvent.target).text();
+                                    // if(!$target.attr('title')){
+                                    //     // console.log('6666666')
+                                    //     $target.attr('title',$(jsEvent.target).text())  //需要加的title数据
+                                    // }
+                                    
+                                    // tooltip.pop(jsEvent.target, event.content);
+                                    
+                                    setTimeout(function () { 
+                                        if(lock){
+                                            lock = false
+                                            
+                                            var color
+                                            function getColor(dom) {
+                                                if (dom.attr('class') !== 'fc-day-grid-event fc-h-event fc-event fc-start fc-end') {
+                                                    getColor(dom.parent());
+                                                }else{
+                                                    color = dom.css('background-color');
+                                                }
+                                            }
+                                            getColor($(jsEvent.target));
+
+                                            $('body').append('<div class="popCard" ><h4>YY日常维护彭建</h4><p>总费用：323202元</p><div><p>护说明：</p>请彭建吃饭请彭建吃饭请彭建吃饭请彭建吃饭请彭建吃饭</div><p>礼&nbsp;&nbsp;&nbsp;&nbsp;品：3232元</p><p>其&nbsp;&nbsp;&nbsp;&nbsp;他：1235元</p><p>餐&nbsp;&nbsp;&nbsp;&nbsp;费：2689元</p><p>旅&nbsp;&nbsp;&nbsp;&nbsp;费：4174元</p></div>')
+                                            $('.popCard').css({'top': jsEvent.pageY + 10 + 'px','left': jsEvent.pageX + 20 + 'px','border-color':color}).find('h4').css('color',color);
+                                        }
+                                        
+                                    },100);
+                                },
+                                eventMouseout: function (event, jsEvent, view) {
+                                    $('.popCard').remove();
+                                    lock = true
+                                }
+                            })
+                            setSelect(data);
+                        }
+                        function setSelect(data) {
+                            //console.log(data);
+                            var allGroup = '';
+                            data.forEach(function (item, index) {
+                                var btnItem = '<button type="button" class="btn btn-default z-btn" data="' + item.id + '" style="background-color:' + item.color + '; color:' + item.textColor + ';">' + item.name + '</button>';
+                                allGroup += btnItem;
+                            });
+                            $('.z-group').html(allGroup);
+                            $('.z-btn').each(function (index) {
+                                $(this).bind('click', function (event) {
+                                    $(this).toggleClass('btndis');
+                                    var iftrue = $(this).hasClass('btndis');
+                                    var thisid = $(this).attr('data');
+                                    if (iftrue) {
+                                        $('#calendar').fullCalendar('removeEventSources', thisid);
+                                    } else {
+                                        $('#calendar').fullCalendar('addEventSource', data[index]);
+                                    }
+                                });
+                            })
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version1.0</b>
+            </div>
+            <strong></strong> 媒介管理系统
+        </footer>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-red',
+                radioClass: 'iradio_square-red',
+                increaseArea: '15%' // optional
+            });
+
+            // 活动时间
+            $(".g_activityTime").datetimepicker({
+                minView: "month",
+                language: 'zh-CN',
+                //format: 'yyyy-mm-dd hh:ii',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: true,
+                //minView: 0,
+                //minuteStep:10,
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+                var starttime = $(".g_startTime").val();
+                $(".g_endTime").datetimepicker('setStartDate', starttime);
+                $(".g_startTime").datetimepicker('hide');
+            });
+
+            // 活动时间
+            $(".g_activityEndTime").datetimepicker({
+                minView: "month",
+                language: 'zh-CN',
+                //format: 'yyyy-mm-dd hh:ii',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: true,
+                //minView: 0,
+                //minuteStep:10,
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+                var starttime = $(".g_startTime").val();
+                $(".g_endTime").datetimepicker('setStartDate', starttime);
+                $(".g_startTime").datetimepicker('hide');
+            });
+
+            // 开始时间 或创建时间
+            $(".g_startTime").datetimepicker({
+                minView: "month",
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+                var starttime = $(".g_startTime").val();
+                $(".g_endTime").datetimepicker('setStartDate', starttime);
+                $(".g_startTime").datetimepicker('hide');
+            });
+
+
+            //结束时间 或结束时间
+            $(".g_endTime").datetimepicker({
+                minView: "month",
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+                var starttime = $(".g_startTime").val();
+                var endtime = $(".g_endTime").val();
+                $(".g_startTime").datetimepicker('setEndDate', endtime);
+                $(".g_endTime").datetimepicker('hide');
+            });
+
+            //第二个开始时间和结束时间
+            // 开始时间
+            $(".g_startTime1").datetimepicker({
+                minView: "month",
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+                var starttime = $(".g_startTime1").val();
+                $(".g_endTime1").datetimepicker('setStartDate', starttime);
+                $(".g_startTime1").datetimepicker('hide');
+            });
+            //结束时间
+            $(".g_endTime1").datetimepicker({
+                minView: "month",
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left"
+            }).on('changeDate', function (ev) {
+                var starttime = $(".g_startTime1").val();
+                var endtime = $(".g_endTime1").val();
+                $(".g_startTime1").datetimepicker('setEndDate', endtime);
+                $(".g_endTime1").datetimepicker('hide');
+            });
+
+            $('.g_data_time').datetimepicker({
+                format: 'yyyy-mm-dd',
+                minView: "month",
+                language: 'zh-CN',
+                minuteStep: 30,
+                autoclose: true
+            });
+
+            $('th span.glyphicon-arrow-left').removeClass('glyphicon-arrow-left').html('<');
+            $('th span.glyphicon-arrow-right').removeClass('glyphicon-arrow-right').html('>');
+
+        });
+        //图片上传
+        function showPreview(source) {
+            var file = source.files[0];
+            if (window.FileReader) {
+                var fr = new FileReader();
+                fr.onloadend = function (e) {
+                    document.getElementById("g_fileImg").src = e.target.result;
+                };
+                fr.readAsDataURL(file);
+            }
+        };
+
+        //重置
+        function formReset() {
+            var pageNum = $('#pageInfoSize option:selected').val();//选中的值
+
+            //所有的iput框text值都清除
+            document.getElementById("myform").reset();
+            //所有input框的回填的value值赋值为空
+            $("input").val("");
+            //select选项都默认不选中
+            $('option').attr('selected', false);
+            //selct选项默认选请选择
+            $(".reset").val(null).trigger("change");
+
+            $(".form-control").val('');
+            $('option[value=""]').attr('selected', true);
+            $("#pageInfoSize").val(pageNum);
+
+        }
+
+        //刷新当前页面
+        function refurbish() {
+            window.location.reload();
+        }
+
+        //取消按钮
+        $("#cancel").click(function () {
+            window.history.back(-1);
+        });
+
+        $(".cancel").click(function () {
+            window.history.back(-1);
+        });
+
+        $(document).ready(function () {
+
+            // $('#load-more').click(function () {
+            //     var oMore = $('#load-more');
+            //     if (oMore.hasClass('load-more')) {
+            //         $('#part-body').show()
+            //         $('#part-content').show()
+            //         $('#more-btn').show()
+            //         oMore.removeClass('load-more');
+            //         oMore.addClass('more-hide')
+            //     } else {
+            //         $('#part-body').hide()
+            //         $('#part-content').hide()
+            //         $('#more-btn').hide()
+            //         oMore.removeClass('more-hide');
+            //         oMore.addClass('load-more')
+            //     }
+            // })
+
+            $('.js-example-basic-multiple-1').select2();
+            $('.js-example-basic-multiple-2').select2();
+            $('.js-example-basic-multiple-3').select2();
+            $('.js-example-basic-multiple-4').select2();
+
+            $('.js-example-basic-multiple-5').select2();
+            $('.js-example-basic-multiple-6').select2();
+            $('.js-example-basic-multiple-7').select2();
+            $('.js-example-basic-multiple-8').select2();
+
+            // $('.js-example-basic-multiple-1').val('').select2({
+            //        multiple: true
+            //    });
+            //    //数据回显 arr数据数组
+            //    // $(".js-example-basic-multiple-1").val(arr).trigger("change")
+
+            //    $('.js-example-basic-multiple-2').val('').select2({
+            //        multiple: true
+            //    });
+            //    $('.js-example-basic-multiple-3').val('').select2({
+            //        multiple: true
+            //    });
+            //    $('.js-example-basic-multiple-4').val('').select2({
+            //        multiple: true
+            //    });
+            //    $('.js-example-basic-multiple-5').val('').select2({
+            //        multiple: true
+            //    });
+            //    $('.js-example-basic-multiple-6').val('').select2({
+            //        multiple: true
+            //    });
+
+
+            //点击升降序icon 切换icon
+            $('.up-down-icon').each(function (index, val) {
+                $(this).click(function () {
+                    var $this = $(this);
+
+                    //获得当前的url参数
+                    var url = window.location.href;//window.location.search;
+                    var type = $this.attr('type');
+                    //获得当前路径的后5位
+                    if (url.substr(url.length - 5) == 'index') {
+                        type = "?" + type;
+                    } else {
+                        type = "&" + type;
+                    };
+                    var canshu;
+
+
+                    if ($this.hasClass('up-icon')) {
+                        $this.addClass('down-icon')
+                        $this.removeClass('up-icon');
+                        canshu = type + "=desc";
+                    } else {
+                        $this.addClass('up-icon')
+                        $this.removeClass('down-icon')
+                        canshu = type + "=asc";
+                    }
+
+                    location.href = url + canshu;
+                })
+            })
+
+            $('.up-down-icon').each(function (index, val) {
+                var $this = $(this);
+                var type = $this.attr('type');
+
+            })
+
+
+
+
+
+            $(".iframe1").fancybox({
+                type: 'iframe',
+                width: 800,
+                maxHeight: 500,
+            });
+            $(".iframe2").fancybox({
+                type: 'iframe',
+                width: 620,
+                maxHeight: 470,
+            });
+
+            $(".iframe3").fancybox({
+                type: 'iframe',
+                width: 600,
+                maxHeight: 300,
+            });
+            $(".iframe6").fancybox({
+
+                type: 'iframe',
+                width: 600,
+                maxHeight: 300,
+            });
+
+        });
+
+        function watermark(settings) {
+            //默认设置
+            var defaultSettings = {
+                watermark_txt: "WX  WX 2019-03-04",
+                watermark_x: 20,//水印起始位置x轴坐标
+                watermark_y: 20,//水印起始位置Y轴坐标
+                watermark_rows: 10,//水印行数
+                watermark_cols: 10,//水印列数
+                watermark_x_space: 20,//水印x轴间隔
+                watermark_y_space: 40,//水印y轴间隔
+                watermark_color: '#aaa',//水印字体颜色
+                watermark_alpha: 0.3,//水印透明度
+                watermark_fontsize: '15px',//水印字体大小
+                watermark_font: '微软雅黑',//水印字体
+                watermark_width: 220,//水印宽度
+                watermark_height: 70,//水印长度
+                watermark_angle: 20//水印倾斜度数
+            };
+            //采用配置项替换默认值，作用类似jquery.extend
+            if (arguments.length === 1 && typeof arguments[0] === "object") {
+                var src = arguments[0] || {};
+                for (key in src) {
+                    if (src[key] && defaultSettings[key] && src[key] === defaultSettings[key])
+                        continue;
+                    else if (src[key])
+                        defaultSettings[key] = src[key];
+                }
+            }
+
+            //var oTemp = document.createDocumentFragment();
+            var oTemp = document.createElement('div');
+            oTemp.className = "wmWrapper";
+
+            //获取页面最大宽度
+            //    var page_width = Math.max(document.body.scrollWidth,document.body.clientWidth);
+            //    var cutWidth = page_width*0.0150;
+            //    var page_width=page_width-cutWidth;
+
+            //获取页面最大宽度  
+            var page_width = Math.max(document.body.scrollWidth, document.body.clientWidth);
+            //获取页面最大长度  
+            var page_height = Math.max(document.body.scrollHeight, document.body.clientHeight);
+
+            //获取页面最大高度
+            //    var page_height = Math.max(document.body.scrollHeight,document.body.clientHeight);
+            //     var page_height = document.body.scrollHeight+document.body.scrollTop;
+            //如果将水印列数设置为0，或水印列数设置过大，超过页面最大宽度，则重新计算水印列数和水印x轴间隔
+            if (defaultSettings.watermark_cols == 0 || (parseInt(defaultSettings.watermark_x + defaultSettings.watermark_width * defaultSettings.watermark_cols + defaultSettings.watermark_x_space * (defaultSettings.watermark_cols - 1)) > page_width)) {
+                defaultSettings.watermark_cols = parseInt((page_width - defaultSettings.watermark_x + defaultSettings.watermark_x_space) / (defaultSettings.watermark_width + defaultSettings.watermark_x_space));
+                defaultSettings.watermark_x_space = parseInt((page_width - defaultSettings.watermark_x - defaultSettings.watermark_width * defaultSettings.watermark_cols) / (defaultSettings.watermark_cols - 1));
+            }
+            //如果将水印行数设置为0，或水印行数设置过大，超过页面最大长度，则重新计算水印行数和水印y轴间隔
+            if (defaultSettings.watermark_rows == 0 || (parseInt(defaultSettings.watermark_y + defaultSettings.watermark_height * defaultSettings.watermark_rows + defaultSettings.watermark_y_space * (defaultSettings.watermark_rows - 1)) > page_height)) {
+                defaultSettings.watermark_rows = parseInt((defaultSettings.watermark_y_space + page_height - defaultSettings.watermark_y) / (defaultSettings.watermark_height + defaultSettings.watermark_y_space));
+                defaultSettings.watermark_y_space = parseInt(((page_height - defaultSettings.watermark_y) - defaultSettings.watermark_height * defaultSettings.watermark_rows) / (defaultSettings.watermark_rows - 1)) - 10;
+            }
+            var x;
+            var y;
+            for (var i = 0; i < 36; i++) {
+                y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i;
+                for (var j = 0; j < 20; j++) {
+                    x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j;
+
+                    var mask_div = document.createElement('div');
+                    mask_div.id = 'mask_div' + i + j;
+                    mask_div.className = 'mask_div';
+                    mask_div.appendChild(document.createTextNode(defaultSettings.watermark_txt));
+                    //设置水印div倾斜显示
+                    mask_div.style.webkitTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.MozTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.msTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.OTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.transform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.visibility = "";
+                    mask_div.style.position = "absolute";
+                    mask_div.style.left = x + 'px';
+                    mask_div.style.top = y + 'px';
+                    mask_div.style.overflow = "hidden";
+                    mask_div.style.zIndex = "9999";
+                    mask_div.style.pointerEvents = 'none';//pointer-events:none  让水印不遮挡页面的点击事件
+                    //mask_div.style.border="solid #eee 1px";
+                    mask_div.style.opacity = defaultSettings.watermark_alpha;
+                    mask_div.style.fontSize = defaultSettings.watermark_fontsize;
+                    mask_div.style.fontFamily = defaultSettings.watermark_font;
+                    mask_div.style.color = defaultSettings.watermark_color;
+                    mask_div.style.textAlign = "center";
+                    mask_div.style.width = defaultSettings.watermark_width + 'px';
+                    mask_div.style.height = defaultSettings.watermark_height + 'px';
+                    mask_div.style.display = "block";
+                    oTemp.appendChild(mask_div);
+                };
+            };
+            document.body.appendChild(oTemp);
+        }
+
+        watermark();
+
+        //点击确定之后执行的js
+        function setStyle() {
+            $(".btn-danger").attr("disabled", true);
+        }
+
+        //失败后执行的js
+        function errorStyle() {
+            $(".btn-danger").attr("disabled", false);
+        }
+
+        //是否关闭iframe
+        function isOk() {
+            $(".auth_adm").hide();
+        }
+
+        //是否关闭iframe
+        $('.g_close').click(function () {
+            $(".auth_adm").hide();
+        })
+    </script>
+    <!--wrapper end-->
+
+</body>
+
+</html>

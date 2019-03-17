@@ -6,24 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        input[type="text"i]:disabled {
+            background: white;
+        }
+    </style>
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-    <div id="NIE-warning-tips" style="width:100%;height:97px;background-color:white;position: absolute;left:0;top:0;z-index:10000000;text-align: center;line-height: 100px;border-bottom: 3px solid #c81331;">
-        <img src="https://nie.res.netease.com/comm/nie.topBar/images/warning.png" style="position:relative;top: 2px;" />
-        <span style="font-size: 18px;color:black;">&nbsp;您使用的浏览器版本过低，可能会影响到您浏览本页面，建议升级您的浏览器：&nbsp;&nbsp;</span>
-        <a href="https://www.google.cn/intl/zh-CN/chrome/browser/desktop/" target="_balnk" style="font-size: 18px;display: inline-block;width: 180px;height: 60px;color: white;background-color: #c81331;line-height: 60px;text-align: center;">谷歌&nbsp;Chrome</a>
+    <div>
+        <h2>一级</h2>
+        <ul>
+            <li>
+                <h4>二级</h4>
+                <ul>
+                    <li>三级</li>
+                    <li>三级</li>
+                    <li>三级</li>
+                </ul>
+            </li>
+            <li>二级</li>
+            <li>二级</li>
+            <li>二级</li>
+        </ul>
     </div>
-    <div id="NIE-warning-bg" style="width: 100%;height: 100%;_height:1000px;position:fixed;_position:absolute;left:0;top:0;background-color: black;z-index:9999999;opacity: 0.65;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);"></div>
-    <div id="NIE-warning-dialog" style="width: 400px;height:190px;padding:40px 60px;position:fixed;_position:absolute;left:50%;top:50%;margin:-132px 0 0 -260px;background-color: white;z-index: 10000000;border-top: 3px solid #c81331;">
-        <p style="font-size: 18px;line-height: 30px;color:black;">您使用的浏览器版本过低，可能会影响到您浏览本页面，建议升级您的浏览器：</p>
-        <a href="https://www.google.cn/intl/zh-CN/chrome/browser/desktop/" target="_balnk" style="font-size: 18px;display: inline-block;width: 180px;height: 60px;color: white;background-color: #c81331;line-height: 60px;text-align: center;margin-top: 20px;">谷歌&nbsp;Chrome</a>
-        <p style="width: 100%;text-align: right;"><img src="https://nie.res.netease.com/comm/nie.topBar/images/logo.png" alt=""></p>
-    
-        <a href="javascript:void(0)" onclick="document.getElementById('NIE-warning-dialog').style.display='none';document.getElementById('NIE-warning-bg').style.display='none'" style="position: absolute;top: -3px;right: -60px;display: block;width:60px;height: 60px;text-align: center;line-height: 60px;color:white;background-color: #c81331;font-size: 20px;font-weight: bolder;">&times;</a>
-    </div>
-    <![endif]-->
+
 </body>
 
 </html>
+<script>
+    var data = {
+        '一级':{
+            title: '一级'
+            sub:[{},{},{}]
+        }
+    }
+</script>
