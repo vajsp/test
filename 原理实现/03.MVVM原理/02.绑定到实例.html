@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    {{a}}
+  </div>
+  <p>vue的特点不能新添加不存在的属性 不能存在的属性没有get和set</p>
+  <p>深度响应 因为每次赋予一个新对象时会给这个新对象添加数据劫持</p>
+</body>
+
+</html>
+<script>
+  function Zhufeng(options = {}) {
+    // 将所有属性挂在到
+    this.$options = options
+    var data = this._data = this.$options.data
+
+    observe(data)
+
+    // 将数据绑定到实例上 this代理了_data
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        Object.defineProperty(this, key, {
+          enumerable: true,
+          get() {
+            // this.a = 1
+            return this._data[key]
+          },
+          set(newVal) {
+            this._data[key] = newVal
+          }
+        })
+      }
+    }
+  }
+
+  // 观察对象给对象添加ObjectDefineProperty
+  // 这里写我们的主要逻辑
+  function Observe(data) {
+    // 把data属性通过object.definePropety的方式
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        let val = data[key]
+        // 继续递归劫持数据
+        observe(val)
+
+        Object.defineProperty(data, key, {
+          // 可改的
+          enumerable: true,
+          get() {
+            return val
+          },
+          //更改值的时候
+          set(newVal) {
+            //设置的值和以前的是一个东西
+            if (newVal === val) {
+              return
+            }
+            //如果以后在获取值的时候将刚才的值再丢回去
+            val = newVal;
+
+            // 当对象改变时继续数据劫持
+            observe(val)
+          }
+        })
+      }
+    }
+  }
+
+  function observe(data) {
+    if (typeof data !== 'object') {
+      return
+    }
+    return new Observe(data)
+  }
+</script>
+<script>
+  let zhufeng = new Zhufeng({
+    el: '#app',
+    data: {
+      a: {
+        a: 1
+      }
+    }
+  })
+</script>

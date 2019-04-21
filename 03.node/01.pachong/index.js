@@ -7,7 +7,7 @@ var dataArr = [];
 
 
 // endPage最小值为1，第一页
-var endPage = 12;
+var endPage = 10;
 
 
 
