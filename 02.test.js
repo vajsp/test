@@ -1,32 +1,35 @@
-// let Promise = require('./原理实现/promise');
+var arr = [
+  [1, 2, 2],
+  [3, 4, 5, 5],
+  [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10
+];
 
-// let p1 = new Promise(function (resolve,reject) { 
-//   setTimeout(() => {
-//     var num = Math.random()
 
-//     if (num > 0.5) {
-//       resolve('成功')
-//     }else{
-//       reject('失败')
-//     }
-//   });
-// })
+function fn(arr) {
+  if (!(arr instanceof Array)) return;
 
-// p1.then((res) => {
-//   console.log(res)
-// },(res) => {
-//   console.log(res)
-// })
+  var newArr = [];
 
-// var str = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdbd3978ceed6ed58&redirect_uri=http%3A%2F%2Fwxlogin.maxrocky.com%2FweixinKWSqhZblYx%2Fbasketball-children-test%2Findex.html&response_type=code&scope=snsapi_userinfo&state=MQ==&connect_redirect=1&uin=MjAzMDQ1NTQzNg%3D%3D&key=e83f21bbb1373290c3aaa181eb73291a0c8b2949504622b70e7da0256a7c71fa5ad4c31570baa3bbb30067941f443dcd&pass_ticket=4HJRbaCgbMcTbjHFiRGwoRu5WncNJTlVNh1DmYYhjgK0V/wUd9lm+hfphAgl71GreMCLBqHQcMTSs1hOyIDeLg=='
+  function pushArr(arr) {
+    arr.forEach((ele) => {
+      if (ele instanceof Array) {
+        pushArr(ele)
+      } else {
+        newArr.push(ele)
+      }
+    })
+  }
 
-// var st = str.split('&')
+  pushArr(arr)
 
-// var sr = st.map((item) => {
-//   if (item.includes('redirect_uri')) {
-//     return item = item + '?shareId=1'
-//   }else{
-//     return item
-//   }
-// })
+  var newArr2 = [...new Set(newArr)];
 
+  newArr2 = newArr2.sort((a,b) => {
+    return a - b
+  })
+
+  console.log(newArr2);
+  return newArr2
+}
+
+fn(arr)

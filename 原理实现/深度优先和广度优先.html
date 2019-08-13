@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="parent" id="parent">
+    <div class="child-1">
+      <div class="child-1-1">
+        <div class="child-1-1-1">
+          a
+        </div>
+      </div>
+      <div class="child-1-2">
+        <div class="child-1-2-1">
+          a
+        </div>
+      </div>
+      <div class="child-1-3">
+        c
+      </div>
+    </div>
+    <div class="child-2">
+      <div class="child-2-1">
+        d
+      </div>
+      <div class="child-2-1">
+        e
+      </div>
+    </div>
+    <div class="child-3">
+      <div class="child-3-1">
+        f
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  var parent = document.getElementById('parent');
+
+  var deep = function (parent, list = []) {
+    if (parent) {
+      list.push(parent)
+      var children = parent.children
+      for (let i = 0; i < children.length; i++) {
+        deep(children[i], list)
+      }
+      return list
+    }
+  }
+
+  var width = function (parent) {
+    var nodes = []
+    var stack = []
+    if (parent) {
+      stack.push(parent)
+      while (stack.length) {
+        var node = stack.shift()
+        var children = node.children
+        nodes.push(node)
+        for (let i = 0; i < children.length; i++) {
+          stack.push(children[i])
+        }
+      }
+    }
+    return nodes
+  }
+
+  console.log(deep(parent));
+  console.log(width(parent));
+</script>
