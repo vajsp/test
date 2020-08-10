@@ -6,13 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    .box {
+      width: 300px;
+      height: 300px;
+      /* position: absolute; */
+      /* right: 0; */
+      /* top: 100px; */
+      border: 1px solid black;
+    }
+  </style>
 </head>
 
 <body>
-  隆基泰和决策指挥系统 前端开发
-  龙湖易览可视化平台 前端开发
-  万达云上丹寨摄影大赛项目 前端开发
-  
+  <div class="drag box" draggable="true">1</div>
+  <div class="container">容器</div>
 </body>
+<script>
+  var ele = document.querySelector(".drag");
+  var container = document.querySelector(".container");
+  ele.ondragstart = function (event) {
+    console.log("start");
+    console.log(event);
+    //不能使用text或Text，firefox会打开新tab
+    event.dataTransfer.setData("te", event.target.innerText);
+  };
+  container.ondrop = function (event) {
+    console.log("onDrop");
+    var text = event.dataTransfer.getData("te");
+    alert(text);
+    event.preventDefault();
+  }
+  container.ondragover = function (event) {
+    console.log("onDrop over");
+    console.log(event);
+    event.preventDefault();
+  }
+</script>
 
 </html>
