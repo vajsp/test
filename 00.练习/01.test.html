@@ -4,44 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <style>
-    .box {
-      width: 300px;
-      height: 300px;
-      /* position: absolute; */
-      /* right: 0; */
-      /* top: 100px; */
-      border: 1px solid black;
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 </head>
 
 <body>
-  <div class="drag box" draggable="true">1</div>
-  <div class="container">容器</div>
+  <div id="main" style="width: 600px;height:400px;"></div>
 </body>
-<script>
-  var ele = document.querySelector(".drag");
-  var container = document.querySelector(".container");
-  ele.ondragstart = function (event) {
-    console.log("start");
-    console.log(event);
-    //不能使用text或Text，firefox会打开新tab
-    event.dataTransfer.setData("te", event.target.innerText);
-  };
-  container.ondrop = function (event) {
-    console.log("onDrop");
-    var text = event.dataTransfer.getData("te");
-    alert(text);
-    event.preventDefault();
-  }
-  container.ondragover = function (event) {
-    console.log("onDrop over");
-    console.log(event);
-    event.preventDefault();
-  }
-</script>
 
 </html>
+<script type="text/javascript">
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main'));
+
+  // 指定图表的配置项和数据
+  var option = {
+    title: {
+      text: 'ECharts 入门示例'
+    },
+    tooltip: {},
+    legend: {
+      data: ['销量']
+    },
+    bamp: {
+      key: "nmk7cZTPOluGXWMmLyAMyaMABe2FlcPP",
+      center: [114.173632, 22.648713],
+      zoom: 11,
+      roam: true,
+    },
+    series: []
+  };
+
+  // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
+</script>
