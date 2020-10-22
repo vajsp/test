@@ -10,13 +10,14 @@
 //   while(true) {}
 // }
 
+// 解构的写法
 function add({ first, second }: { first: number; second: number }): number {
-  return first + second;
+  return first + second
 }
 
 function getNumber({ first }: { first: number }) {
-  return first;
+  return first
 }
 
-const total = add({ first: 1, second: 2 });
-const count = getNumber({ first: 1 });
+const total = add({ first: 1, second: 2 })
+const count = getNumber({ first: 1 })
