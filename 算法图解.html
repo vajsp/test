@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+</html>
+<script>
+    /* 第四章 快速排序 */
+    // 4.1 请编写前述sum函数的代码
+    const arr = [2, 4];
+
+    function sum(sumArr) {
+        if (sumArr.length === 0) {
+            return 0;
+        } else {
+            const value = sumArr.shift();
+            return value + sum(sumArr);
+        }
+    }
+
+    const res = sum(arr);
+    // console.log(res);
+    // 4.2 编写一个递归函数来计算列表包含的元素数
+    // 4.3 找出列表中最大的数字
+    const arr1 = [2, 8, 4];
+    function findMaxNumber(sumArr) {
+        if (sumArr.length === 1) {
+            return sumArr[0];
+        } else {
+            const value = sumArr.shift();
+            const value2 = findMaxNumber(sumArr);
+            return value > value2 ? value : value2;
+        }
+    }
+
+    const max = findMaxNumber(arr1);
+    console.log('4.3 找出列表中最大的数字');
+    console.log(max);
+    // 4.4 用第一章的二分法来写？基线条件和递归条件是什么？
+    const arr3 = [5, 3, 6, 1, 5465, 25, 5];
+    function quickSort(sumArr) {
+        if (sumArr.length < 2) {
+            return sumArr;
+        }
+
+        const base = sumArr.shift();
+        const less = [];
+        const greater = [];
+        const equal = [];
+        sumArr.forEach((element) => {
+            if (element < base) {
+                less.push(element);
+            }
+            if (element > base) {
+                greater.push(element);
+            }
+
+            if (element === base) {
+                equal.push(element);
+            }
+        });
+
+        const lessArr = quickSort(less);
+        const greaterArr = quickSort(greater);
+
+        const value = []
+            .concat(lessArr)
+            .concat([base, ...equal])
+            .concat(greaterArr);
+        return value;
+    }
+
+    const res1 = quickSort(arr3);
+    console.log('快速排序');
+    console.log(res1);
+</script>
